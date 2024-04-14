@@ -1,0 +1,149 @@
+.login_page_section {
+  width: 1400px;
+  margin: auto;
+}
+
+.login_form_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_card {
+  width: 500px;
+  padding: 0px 10px;
+}
+.emailLoginInput {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  background-color: #fff;
+  font-size: 18px;
+  padding: 5px 0px;
+  margin: 10px 0px;
+}
+
+.signin_btn {
+  color: #fff;
+  background: #ef8341;
+  border: none;
+  width: 100%;
+  padding: 10px 20px;
+  margin: 20px 0px 10px 0px;
+  transition: all 0.2s;
+}
+.signin_btn:hover {
+  background: #666666;
+}
+
+.sign_up_path a {
+  color: white;
+  text-decoration: none;
+  background: #212529;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 400px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+.otp_box {
+  display: none;
+  text-align: center;
+  
+}
+
+#otpSubmitBtn {
+  color: #fff;
+  background: #ef8341;
+  border: none;
+  width: 100%;
+  padding: 10px 20px;
+  margin: 20px 0px;
+  transition: all 0.2s;
+}
+.countdown-text {
+  display: flex;
+  margin: 10px 0px 0px 0px;
+}
+.countdown-text p {
+  margin-bottom: 0px !important;
+}
+.resendOtpBtn {
+  color: #ffffff;
+  background: #ef8341;
+  border: none;
+  border-radius: 3px;
+  padding: 0px 5px;
+  margin-left: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+}
