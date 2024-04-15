@@ -1,5 +1,10 @@
 .header_container{
   width: 100%;
+  padding: 20px 0px 0px 0px;
   display: flex;
   justify-content: space-between;
+}
+.header_container h1{
+  font-size: 18px;
+
 }

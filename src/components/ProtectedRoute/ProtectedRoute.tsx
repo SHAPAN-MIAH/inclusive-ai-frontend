@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Votes = () => {
+const ProtectedRoute = () => {
   return (
     <div>
-      votes
+      
     </div>
   );
 };
 
-export default Votes;
+export default ProtectedRoute;

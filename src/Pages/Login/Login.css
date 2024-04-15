@@ -1,6 +1,10 @@
 .login_page_section {
-  width: 1400px;
+  height: 90vh;
   margin: auto;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  font-family:'Times New Roman', Times, serif;
 }
 
 .login_form_container {
@@ -8,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .login_card {
@@ -18,8 +23,8 @@
   width: 100%;
   outline: none;
   border: none;
-  border-bottom: 1px solid #ced4da;
-  background-color: #fff;
+  border-bottom: 1px solid gainsboro;
+  background-color: transparent;
   font-size: 18px;
   padding: 5px 0px;
   margin: 10px 0px;
@@ -27,7 +32,7 @@
 
 .signin_btn {
   color: #fff;
-  background: #ef8341;
+  background: #96b1fc;
   border: none;
   width: 100%;
   padding: 10px 20px;

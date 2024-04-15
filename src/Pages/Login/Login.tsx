@@ -1,48 +1,66 @@
-import React, { useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import "./Login.css";
-import axios from "axios";
+import axios from "axios"; 
 import { baseUrl } from "../../assets/BaseUrl";
-import OtpInput from "react-otp-input";
+// import OtpInput from "react-otp-input";
+
+interface IState {
+  user: {
+    email: string;
+  };
+}
 
 const Login = () => {
-  // const dispatch = useDispatch();
-  // const { register, handleSubmit } = useForm();
-  // const { loginRes } = useSelector((state) => state.loginRes);
-  // const { isAuthenticated } = useSelector((state) => state.user);
-  // const token = localStorage.getItem("token");
-
-  const [otpRequestData, setOtpRequestData] = useState({
-    phone: "",
+  const [state, setState] = useState<IState>({
+    user: {
+      email: "",
+    },
   });
+
   const [minutes, setMinutes] = useState(3);
   const [seconds, setSeconds] = useState(0);
   const [otpSuccessStatus, setOtpSuccessStatus] = useState(false);
-  const [otp, setOtp] = useState("");
+  // const [otp, setOtp] = useState("");
 
-  const handleChange = ({ currentTarget: input }) => {
-    setOtpRequestData({ ...otpRequestData, [input.name]: input.value });
+
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setState({
+      user: {
+        ...state.user,
+        [event.target.name]: event.target.value,
+      },
+    });
   };
+  
 
-  const emailSubmit = async (e) => {
-    e.preventDefault();
-    const loginWithNumberFormContainer = document.querySelector(
-      ".login_with_email_container"
-    );
-    const otp_box = document.querySelector(".otp_box");
-    loginWithNumberFormContainer.style.display = "none";
-    otp_box.style.display = "block";
-
+  const emailSubmit = (event: React.FormEvent<HTMLInputElement>) : void => {
+    event.preventDefault();
 
     // try {
-    //   await axios.post(`${baseUrl}/auth/send`, otpRequestData).then((res) => {
-    //     if (res.data.status == "success") {
-    //       setOtpSuccessStatus(true);
-    //     }
-    //   });
+       axios.post(`${baseUrl}/auth/request-otp`, state.user)
+      .then((res) => {
+
+        console.log(res);
+
+        // if (res.data.status == "success") {
+        //   setOtpSuccessStatus(true);
+
+        //   const loginWithNumberFormContainer = document.querySelector(
+        //     ".login-with-number-form-container"
+        //   );
+        //   const otp_box = document.querySelector(".otp_box");
+
+        //   loginWithNumberFormContainer.style.display = "none";
+        //   otp_box.style.display = "block";
+        // }
+      });
     // } catch (error) {
-    //   console.log(error);
+    //   console.log("error.message")
     // }
   };
+
+
 
   useEffect(() => {
     if (otpSuccessStatus === true) {
@@ -67,34 +85,35 @@ const Login = () => {
     }
   }, [otpSuccessStatus, seconds, minutes]);
 
-  const resendOtpData = {
-    phone: otpRequestData.phone,
-    resend: 0,
-  };
 
-  const resendOTP = () => {
-    setMinutes(3);
-    setSeconds(0);
-    axios.post(`${baseUrl}/auth/send`, resendOtpData).then((res) => {
-      console.log(res);
-    });
-  };
+
+  // const resendOtpData = {
+  //   email: state.user.email,
+  //   resend: 0,
+  // };
+
+  // const resendOTP = () => {
+  //   setMinutes(3);
+  //   setSeconds(0);
+  //   axios.post(`${baseUrl}/auth/send`, resendOtpData).then((res) => {
+  //   });
+  // };
 
   // const otpSubmitData = {
-  //   phone: `${otpRequestData.phone}`,
+  //   email: `${state.user.email}`,
   //   pin: `${otp}`,
   // };
 
-  const otpSubmit = (e) => {
-    e.preventDefault();
-    // dispatch(userLogin(otpSubmitData));
+  // const otpSubmit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(userLogin(otpSubmitData));
 
-    // if (!navLoginOpen == true) {
-    //   localStorage.setItem("modalLogin", "true");
-    // }
-  };
+  //   if (!navLoginOpen == true) {
+  //     localStorage.setItem("modalLogin", "true");
+  //   }
+  // };
 
-  // user login action dispatch.........
+
   // const onSubmit = (data) => {
   //   dispatch(userLogin(data));
 
@@ -103,36 +122,22 @@ const Login = () => {
   //   }
   // };
 
-  // useEffect(() => {
-  //   if (isAuthenticated == true && token) {
-  //     loginRes?.status == "success" &&
-  //       toast.success(`${loginRes?.message}`, {
-  //         duration: 2000,
-  //         style: {
-  //           width: "100%",
-  //           height: "80px",
-  //           padding: "0px 20px",
-  //           background: "#86bc19",
-  //           color: "#fff",
-  //         },
-  //       });
-  //   }
-  // }, [loginRes, isAuthenticated, token]);
 
   return (
     <div className="login_page_section">
       <div className="login_form_container">
         <div className="login_card">
-          <h1>Inclusive Ai</h1>
+          <h1>Inclusive AI</h1>
 
           <div className="login_with_email_container mt-5">
             <form onSubmit={emailSubmit}>
               <input
-                type="email"
+                type="text"
                 name="email"
                 required
                 placeholder="Enter your Email"
                 className="emailLoginInput"
+                value={state.user.email}
                 onChange={handleChange}
               />
               <br />
@@ -141,7 +146,7 @@ const Login = () => {
               </button>
             </form>
 
-            <div className="otp_box">
+            {/* <div className="otp_box">
               <strong>We've sent a 4-digit OTP in your email</strong>
               <br />
               <br />
@@ -194,7 +199,7 @@ const Login = () => {
                 Enter
               </button>
               <br />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
