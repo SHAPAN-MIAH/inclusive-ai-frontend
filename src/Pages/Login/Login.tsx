@@ -41,7 +41,7 @@ const Login = () => {
   };
 
   // email submit function handler.............................
-  const emailSubmit = (event: React.FormEvent<HTMLInputElement>): void => {
+  const emailSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
     try {

@@ -1,0 +1,21 @@
+.chat_with_ai_section_sideArticle_container {
+  background-color: rgb(230, 230, 230);
+  padding: 20px 30px;
+  border-radius: 10px;
+}
+
+.chat_with_ai_section_sideArticle_btn_container button,
+.discuss_with_others_section_sideArticle_btn_container button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: 1px solid gainsboro;
+  border-radius: 7px;
+  background-color: rgb(247, 247, 247);
+  font-weight: 600;
+}
+.chat_with_ai_section_sideArticle_btn_container button span,
+.discuss_with_others_section_sideArticle_btn_container button span {
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.5;
+}

@@ -1,7 +1,6 @@
 .login_page_section {
-  height: 90vh;
+  height: 100vh;
   margin: auto;
-  background-color: #ffffff;
   display: flex;
   justify-content: center;
   font-family:'Times New Roman', Times, serif;
@@ -9,6 +8,9 @@
 
 .login_form_container {
   width: 100%;
+  margin: 40px 0px;
+  background-color: #ffffff;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,12 +121,12 @@
 }
 
 .otp_box {
-  /* display: none; */
   text-align: center;
   
 }
 
 #otpSubmitBtn {
+  color: #ffffff;
   background: #96b1fc;
   border: none;
   width: 100%;
@@ -140,6 +142,7 @@
   margin-bottom: 0px !important;
 }
 .resendOtpBtn {
+  color: #ffffff;
   background: #96b1fc;
   border: none;
   border-radius: 3px;

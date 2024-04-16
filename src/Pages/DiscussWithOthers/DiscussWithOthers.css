@@ -1,0 +1,26 @@
+.discuss_with_others_section_sideArticle_container{
+  background-color:rgb(230, 230, 230);
+  padding: 20px 30px;
+  border-radius: 10px;
+}
+.discuss_with_others_section_sideArticle_container h5{
+  font-weight: 600;
+  font-size: 17px;
+}
+.suggested_topic_content{
+  background-color: rgb(249, 249, 249);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0px;
+}
+.suggested_topic_content button{
+  border: 1px solid gainsboro;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.suggested_topic_content button:first-child{
+  color: green;
+}
+.suggested_topic_content button:last-child{
+  color: rgb(0, 145, 255);
+}
