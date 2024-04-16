@@ -1,8 +1,13 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
-import axios from "axios"; 
+import axios from "axios";
 import { baseUrl } from "../../assets/BaseUrl";
-// import OtpInput from "react-otp-input";
+import OtpInput from "react-otp-input";
+import { useNavigate } from "react-router-dom";
+import {  useDispatch } from 'react-redux';
+import { AppDispatch } from "../../store";
+import { setCurrentUser } from "../../features/user/userSlice";
+
 
 interface IState {
   user: {
@@ -11,19 +16,21 @@ interface IState {
 }
 
 const Login = () => {
+  const dispatch: AppDispatch = useDispatch();
+
+
+  const navigate = useNavigate();
+  const [minutes, setMinutes] = useState(5);
+  const [seconds, setSeconds] = useState(0);
+  const [otpSuccessStatus, setOtpSuccessStatus] = useState(false);
+  const [otp, setOtp] = useState("");
   const [state, setState] = useState<IState>({
     user: {
       email: "",
     },
   });
 
-  const [minutes, setMinutes] = useState(3);
-  const [seconds, setSeconds] = useState(0);
-  const [otpSuccessStatus, setOtpSuccessStatus] = useState(false);
-  // const [otp, setOtp] = useState("");
-
-
-
+  
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setState({
       user: {
@@ -32,36 +39,24 @@ const Login = () => {
       },
     });
   };
-  
 
-  const emailSubmit = (event: React.FormEvent<HTMLInputElement>) : void => {
+  // email submit function handler.............................
+  const emailSubmit = (event: React.FormEvent<HTMLInputElement>): void => {
     event.preventDefault();
 
-    // try {
-       axios.post(`${baseUrl}/auth/request-otp`, state.user)
-      .then((res) => {
-
-        console.log(res);
-
-        // if (res.data.status == "success") {
-        //   setOtpSuccessStatus(true);
-
-        //   const loginWithNumberFormContainer = document.querySelector(
-        //     ".login-with-number-form-container"
-        //   );
-        //   const otp_box = document.querySelector(".otp_box");
-
-        //   loginWithNumberFormContainer.style.display = "none";
-        //   otp_box.style.display = "block";
-        // }
+    try {
+      axios.post(`${baseUrl}/auth/request-otp`, state.user).then((res) => {
+        // console.log(res)
+        if (res.data.success === true) {
+          setOtpSuccessStatus(true);
+        }
       });
-    // } catch (error) {
-    //   console.log("error.message")
-    // }
+    } catch (error) {
+      console.log("error.message");
+    }
   };
 
-
-
+  // otp timer function....................
   useEffect(() => {
     if (otpSuccessStatus === true) {
       const interval = setTimeout(() => {
@@ -86,41 +81,46 @@ const Login = () => {
   }, [otpSuccessStatus, seconds, minutes]);
 
 
+  // otp resend request function........................
+  const resendOtpData = {
+    email: state.user.email,
+    resend: 0,
+  };
 
-  // const resendOtpData = {
-  //   email: state.user.email,
-  //   resend: 0,
-  // };
+  const resendOTP = () => {
+    setMinutes(5);
+    setSeconds(0);
 
-  // const resendOTP = () => {
-  //   setMinutes(3);
-  //   setSeconds(0);
-  //   axios.post(`${baseUrl}/auth/send`, resendOtpData).then((res) => {
-  //   });
-  // };
-
-  // const otpSubmitData = {
-  //   email: `${state.user.email}`,
-  //   pin: `${otp}`,
-  // };
-
-  // const otpSubmit = (e) => {
-  //   e.preventDefault();
-  //   dispatch(userLogin(otpSubmitData));
-
-  //   if (!navLoginOpen == true) {
-  //     localStorage.setItem("modalLogin", "true");
-  //   }
-  // };
+    axios.post(`${baseUrl}/auth/request-otp`, resendOtpData)
+    .then((res) => {
+      console.log(res);
+    });
+  };
 
 
-  // const onSubmit = (data) => {
-  //   dispatch(userLogin(data));
+  // otp submit function.....................
+  const otpSubmitData = {
+    email: `${state.user.email}`,
+    otp: `${otp}`,
+  };
 
-  //   if (!navLoginOpen == true) {
-  //     localStorage.setItem("modalLogin", "true");
-  //   }
-  // };
+  const otpSubmit = () => {
+    try {
+      axios.post(`${baseUrl}/auth/verify-otp`, otpSubmitData)
+      .then((res) => {
+        if (res.data.success === true) {
+
+          dispatch(setCurrentUser({ token: res.data.data.token }));
+          localStorage.setItem("token", res.data.data.token);
+          navigate("/")
+
+        }
+      });
+    } catch (error) {
+      console.log("error.message");
+    }
+  };
+
 
 
   return (
@@ -130,76 +130,78 @@ const Login = () => {
           <h1>Inclusive AI</h1>
 
           <div className="login_with_email_container mt-5">
-            <form onSubmit={emailSubmit}>
-              <input
-                type="text"
-                name="email"
-                required
-                placeholder="Enter your Email"
-                className="emailLoginInput"
-                value={state.user.email}
-                onChange={handleChange}
-              />
-              <br />
-              <button className="signin_btn" type="submit">
-                Login / Sign up
-              </button>
-            </form>
+            {otpSuccessStatus === true ? (
+              <div className="otp_box">
+                <strong>We've sent a 6-digit OTP in your email</strong>
+                <br />
+                <br />
+                <span>Please enter 6 digit OTP to verify your identity</span>
+                <div className="d-flex justify-content-center">
+                  <div>
+                    <div className="d-flex justify-content-center">
+                      <OtpInput
+                        value={otp}
+                        onChange={setOtp}
+                        numInputs={6}
+                        renderSeparator={<span></span>}
+                        renderInput={(props) => <input {...props} />}
+                        inputStyle={{
+                          width: "40px",
+                          borderRadius: "0px",
+                          padding: "5px 10px",
+                          outline: "none",
+                          border: "1px solid gray",
+                          fontSize: "18px",
+                          marginTop: "10px",
+                        }}
+                      />
+                    </div>
 
-            {/* <div className="otp_box">
-              <strong>We've sent a 4-digit OTP in your email</strong>
-              <br />
-              <br />
-              <span>Please enter 4 digit OTP to verify your identity</span>
-              <div className="d-flex justify-content-center">
-                <div>
-                  <div className="d-flex justify-content-center">
-                    <OtpInput
-                      value={otp}
-                      onChange={setOtp}
-                      numInputs={4}
-                      renderSeparator={<span></span>}
-                      renderInput={(props) => <input {...props} />}
-                      inputStyle={{
-                        width: "40px",
-                        borderRadius: "0px",
-                        padding: "5px 10px",
-                        outline: "none",
-                        border: "1px solid gray",
-                        fontSize: "18px",
-                        marginTop: "10px",
-                      }}
-                    />
-                  </div>
+                    <div className="resendTimer">
+                      <div className="countdown-text">
+                        {seconds > 0 || minutes > 0 ? (
+                          <p>
+                            Request OTP Again:{" "}
+                            {minutes < 10 ? `0${minutes}` : minutes}:
+                            {seconds < 10 ? `0${seconds}` : seconds}
+                          </p>
+                        ) : (
+                          <p>Didn't receive the code?</p>
+                        )}
 
-                  <div className="resendTimer">
-                    <div className="countdown-text">
-                      {seconds > 0 || minutes > 0 ? (
-                        <p>
-                          Request OTP Again:{" "}
-                          {minutes < 10 ? `0${minutes}` : minutes}:
-                          {seconds < 10 ? `0${seconds}` : seconds}
-                        </p>
-                      ) : (
-                        <p>Didn't receive the code?</p>
-                      )}
-
-                      {seconds > 0 || minutes > 0 ? null : (
-                        <span onClick={resendOTP} className="resendOtpBtn">
-                          Resend OTP
-                        </span>
-                      )}
+                        {seconds > 0 || minutes > 0 ? null : (
+                          <span onClick={resendOTP} className="resendOtpBtn">
+                            Resend OTP
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <button onClick={otpSubmit} type="submit" id="otpSubmitBtn">
-                {" "}
-                Enter
-              </button>
-              <br />
-            </div> */}
+                <button onClick={otpSubmit} id="otpSubmitBtn">
+                  {" "}
+                  Enter
+                </button>
+                <br />
+              </div>
+            ) : (
+              <form onSubmit={emailSubmit}>
+                <input
+                  type="text"
+                  name="email"
+                  required
+                  placeholder="Enter your Email"
+                  className="emailLoginInput"
+                  value={state.user.email}
+                  onChange={handleChange}
+                />
+                <br />
+                <button className="signin_btn" type="submit">
+                  Login / Sign up
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>

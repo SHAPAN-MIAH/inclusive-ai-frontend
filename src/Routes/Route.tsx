@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import ChatWithAi from "../Pages/ChatWithAi/ChatWithAi";
 import DiscussWithOthers from "../Pages/DiscussWithOthers/DiscussWithOthers";
 import Votes from "../Pages/Votes/Votes";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <ProtectedRoute><Home /></ProtectedRoute> ,
         children: [
           {
             path: "/chat-with-ai",

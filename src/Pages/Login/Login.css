@@ -119,14 +119,13 @@
 }
 
 .otp_box {
-  display: none;
+  /* display: none; */
   text-align: center;
   
 }
 
 #otpSubmitBtn {
-  color: #fff;
-  background: #ef8341;
+  background: #96b1fc;
   border: none;
   width: 100%;
   padding: 10px 20px;
@@ -141,8 +140,7 @@
   margin-bottom: 0px !important;
 }
 .resendOtpBtn {
-  color: #ffffff;
-  background: #ef8341;
+  background: #96b1fc;
   border: none;
   border-radius: 3px;
   padding: 0px 5px;
