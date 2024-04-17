@@ -4,10 +4,9 @@ import axios from "axios";
 import { baseUrl } from "../../assets/BaseUrl";
 import OtpInput from "react-otp-input";
 import { useNavigate } from "react-router-dom";
-import {  useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { setCurrentUser } from "../../features/user/userSlice";
-
 
 interface IState {
   user: {
@@ -17,7 +16,6 @@ interface IState {
 
 const Login = () => {
   const dispatch: AppDispatch = useDispatch();
-
 
   const navigate = useNavigate();
   const [minutes, setMinutes] = useState(5);
@@ -30,7 +28,6 @@ const Login = () => {
     },
   });
 
-  
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setState({
       user: {
@@ -46,7 +43,7 @@ const Login = () => {
 
     try {
       axios.post(`${baseUrl}/auth/request-otp`, state.user).then((res) => {
-        // console.log(res)
+        
         if (res.data.success === true) {
           setOtpSuccessStatus(true);
         }
@@ -80,7 +77,6 @@ const Login = () => {
     }
   }, [otpSuccessStatus, seconds, minutes]);
 
-
   // otp resend request function........................
   const resendOtpData = {
     email: state.user.email,
@@ -90,12 +86,10 @@ const Login = () => {
     setMinutes(5);
     setSeconds(0);
 
-    axios.post(`${baseUrl}/auth/request-otp`, resendOtpData)
-    .then((res) => {
+    axios.post(`${baseUrl}/auth/request-otp`, resendOtpData).then((res) => {
       console.log(res);
     });
   };
-
 
   // otp submit function.....................
   const otpSubmitData = {
@@ -105,22 +99,16 @@ const Login = () => {
 
   const otpSubmit = () => {
     try {
-      axios.post(`${baseUrl}/auth/verify-otp`, otpSubmitData)
-      .then((res) => {
+      axios.post(`${baseUrl}/auth/verify-otp`, otpSubmitData).then((res) => {
         if (res.data.success === true) {
-
-          dispatch(setCurrentUser({ token: res.data.data }));
-          localStorage.setItem("token", res.data.data.token);
-          navigate("/chat-with-ai")
-
+          dispatch(setCurrentUser(res?.data?.data));
+          navigate("/chat-with-ai");
         }
       });
     } catch (error) {
       console.log("error.message");
     }
   };
-
-
 
   return (
     <div className="login_page_section">

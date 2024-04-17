@@ -1,9 +1,24 @@
 import React from "react";
 import "./header.css";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
+import { clearCurrentUser } from "../../features/user/userSlice";
+import { useSelector } from "react-redux";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const Header = () => {
   const location = useLocation();
+  const dispatch: AppDispatch = useDispatch();
+  const currentUser = useSelector(
+    (state: RootState) => state?.userData?.currentUser
+  );
+
+  console.log(currentUser?.user?.data);
+
+  const handleClearCurrentUser = () => {
+    dispatch(clearCurrentUser());
+  };
 
   return (
     <div className="header_section">
@@ -18,7 +33,18 @@ const Header = () => {
         ) : (
           ""
         )}
-        <p>.....@......</p>
+
+        <Dropdown>
+          <Dropdown.Toggle variant="" id="dropdown-basic">
+            <span>{currentUser?.user.data.email.toString().substring(0, 10)}...</span>
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item href="#/action-1">
+              <span onClick={handleClearCurrentUser}>logout</span>
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
     </div>
   );

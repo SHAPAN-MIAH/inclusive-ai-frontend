@@ -30,7 +30,7 @@ const persistedReducer = persistReducer(persistConfig, userReducer);
 
 const store = configureStore({
   reducer: {
-    user: persistedReducer,
+    userData: persistedReducer,
   },
 });
 
