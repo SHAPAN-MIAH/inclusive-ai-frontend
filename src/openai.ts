@@ -15,6 +15,10 @@ export async function sendMessageToOpenAi(message: string) {
       model: "gpt-3.5-turbo",
       prompt: message,
       max_tokens: 80,
+      temperature: 0.7,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
     }
 
   );

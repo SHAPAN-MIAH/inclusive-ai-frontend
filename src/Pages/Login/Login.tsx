@@ -84,7 +84,6 @@ const Login = () => {
   // otp resend request function........................
   const resendOtpData = {
     email: state.user.email,
-    resend: 0,
   };
 
   const resendOTP = () => {
@@ -110,9 +109,9 @@ const Login = () => {
       .then((res) => {
         if (res.data.success === true) {
 
-          dispatch(setCurrentUser({ token: res.data.data.token }));
+          dispatch(setCurrentUser({ token: res.data.data }));
           localStorage.setItem("token", res.data.data.token);
-          navigate("/")
+          navigate("/chat-with-ai")
 
         }
       });
