@@ -20,13 +20,9 @@ const ChatWithAi = () => {
   const token = currentUser?.token;
 
 
-
-
   const msgEnd = useRef<HTMLDivElement>(null);
 
-  const [input, setInput] = useState<{ prompt: string }>({
-    prompt: "",
-  });
+  const [input, setInput] = useState<{ prompt: string }>({prompt: "",});
   const [messages, setMessages] = useState<{ text: string; isBot: boolean }[]>([
     { text: "How can I help you today?", isBot: true },
   ]);
@@ -35,6 +31,7 @@ const ChatWithAi = () => {
     msgEnd?.current?.scrollIntoView()
   }, [messages])
 
+
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setInput({
       prompt: event.target.value,
@@ -42,12 +39,15 @@ const ChatWithAi = () => {
   };
 
   const handleSend = async () => {
-    const text = input.prompt;
-    setInput("");
+    const InputText = input.prompt;
+
+    setInput('');
     setMessages([
       ...messages,
-      {text, isbot:false}
+      {text: InputText, isBot:false}
     ])
+
+
     await axios
       .post(baseUrl + `/chat-with-ai/get-response`, input, {
         headers: { Authorization: `Bearer ${token}` },
@@ -55,11 +55,13 @@ const ChatWithAi = () => {
       .then((res) => {
         setMessages([
           ...messages,
-          { text, isbot: false },
-          { text: res.data.data.message, isbot: true },
+          { text: InputText, isBot: false },
+          { text: res.data.data.message, isBot: true },
         ]);
       });
   };
+
+
 
   return (
     <>
