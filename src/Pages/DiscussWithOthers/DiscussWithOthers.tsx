@@ -1,13 +1,82 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdOutlineHowToVote } from "react-icons/md";
 import "./DiscussWithOthers.css";
 import userIcon from "../../assets/icons/user-icon.png";
 import sendIcon from "../../assets/icons/send.svg";
+import io from "socket.io-client";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import axios from "axios";
+import { baseUrl } from "../../assets/BaseUrl";
+
+
+const socket = io(`http://localhost:8000`, {
+    withCredentials: true,
+    transports: ["websocket"],
+  });
+
 
 const DiscussWithOthers = () => {
-  const [input, setInput] = useState<string>("");
+  const currentUser = useSelector(
+    (state: RootState) => state?.userData?.currentUser
+  );
+  const token = currentUser?.token;
+  const AuthEmail = currentUser?.user?.data?.email;
 
-  const handleSend = async () => {};
+  const [input, setInput] = useState<string>("");
+  const [messages, setMessages] = useState<any[]>([]);
+
+  // const [messages, setMessages] = useState<{ message: string; senderEmail: string }[]>([]);
+
+  
+
+
+  
+  useEffect(() => {
+    // setMessages([]);
+    axios
+      .get(baseUrl + `/discuss-chat/get-previous-messages`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        setMessages([...messages, ...res.data.data]);
+      });
+  }, []);
+
+
+
+  useEffect(() => {
+    socket.on("connect", () => console.log(socket.id));
+
+    socket.on("discuss-message", (message: any) => {
+      console.log(message, messages)
+      setMessages([...messages, message.data]);
+      setInput("");
+    });
+
+    socket.on("discuss-message-error", (message: any) => {
+      console.log(message);
+    });
+  }, []);
+
+  // socket.disconnect();
+
+  const handleSend = async () => {
+    const textInput = input;
+    setInput('');
+    setMessages([
+      ...messages,
+      {
+      message: textInput,
+      senderEmail: AuthEmail
+    }])
+
+    await socket.emit("discuss-message", {
+      message: input,
+      token: `Bearer ${token}`,
+    });
+  };
+
   return (
     <>
       <div className="discuss_with_others_section">
@@ -49,22 +118,29 @@ const DiscussWithOthers = () => {
               <div className="col-md-8">
                 <div className="discuss_with_others_chat_container">
                   <div className="chats">
-                    <div className="chat">
-                      <img src={userIcon} alt="" />
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Sapiente reprehenderit deserunt ratione perferendis
-                        laboriosam, iure dolores veritatis odit pariatur atque.
-                      </p>
-                    </div>
-                    <div className="chat bot">
-                      <img src={userIcon} alt="" />
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Sapiente reprehenderit deserunt ratione perferendis
-                        laboriosam, iure dolores veritatis odit pariatur atque.
-                      </p>
-                    </div>
+                    {messages.map((message, i) => (
+                      <div
+                        className={
+                          AuthEmail === message?.senderEmail
+                            ? "discuss_chat1"
+                            : "discuss_chat2"
+                        }
+                        key={i}
+                      >
+                        {AuthEmail === message?.senderEmail ? (
+                          <>
+                            <p>{message?.message}</p>
+                            <img src={userIcon} alt="" />{" "}
+                          </>
+                        ) : (
+                          <>
+                            <img src={userIcon} alt="" />
+                            <p>{message?.message}</p>
+                          </>
+                        )}
+                        
+                      </div>
+                    ))}
                   </div>
                   <div className="chat_footer">
                     <div className="inp">

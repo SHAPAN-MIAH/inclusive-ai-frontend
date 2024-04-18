@@ -14,22 +14,37 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 
 const ChatWithAi = () => {
-  const currentUser = useSelector(
-    (state: RootState) => state?.userData?.currentUser
-  );
+  const currentUser = useSelector((state: RootState) => state?.userData?.currentUser);
   const token = currentUser?.token;
-
-
   const msgEnd = useRef<HTMLDivElement>(null);
-
   const [input, setInput] = useState<{ prompt: string }>({prompt: "",});
   const [messages, setMessages] = useState<{ text: string; isBot: boolean }[]>([
-    { text: "How can I help you today?", isBot: true },
+    { text: "Hi, I'm ChatGPT, a state of the art language model developed by openAI. I'm designed to understand and generate human like text based on the input i receive. You can ask me questions, have conversations, seek information, or even request assistance with various task, just let me know How can I help you today?", 
+    isBot: true },
   ]);
+
 
   useEffect(()=> {
     msgEnd?.current?.scrollIntoView()
   }, [messages])
+
+
+  useEffect(() => {
+    axios.get(baseUrl + `/chat-with-ai/previous-all-responses`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then(res => {
+      console.log(res.data.data)
+      // setMessages([
+      //   { text: res.data.data.map(i => i.prompt), isBot: false },
+      //   { text: res.data.data.map(i => i.message ), isBot: true },
+      // ]);
+    })
+    
+  }, [])
+  
+
+  // console.log(messages)
 
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -37,6 +52,7 @@ const ChatWithAi = () => {
       prompt: event.target.value,
     });
   };
+
 
   const handleSend = async () => {
     const InputText = input.prompt;
@@ -46,7 +62,6 @@ const ChatWithAi = () => {
       ...messages,
       {text: InputText, isBot:false}
     ])
-
 
     await axios
       .post(baseUrl + `/chat-with-ai/get-response`, input, {

@@ -1,27 +1,68 @@
-.discuss_with_others_section_sideArticle_container{
-  background-color:rgb(230, 230, 230);
-  padding: 20px 30px;
+.discuss_with_others_section_sideArticle_container {
+  background-color: rgb(230, 230, 230);
+  padding: 20px 40px;
   border-radius: 10px;
 }
-.discuss_with_others_section_sideArticle_container h5{
+.discuss_with_others_section_sideArticle_container h5 {
   font-weight: 600;
   font-size: 17px;
 }
-.suggested_topic_content{
+.suggested_topic_content {
   background-color: rgb(249, 249, 249);
   padding: 20px;
   border-radius: 10px;
   margin: 20px 0px;
 }
-.suggested_topic_content button{
+.suggested_topic_content button {
   border: 1px solid gainsboro;
   border-radius: 5px;
   padding: 10px 20px;
   margin-right: 10px;
 }
-.suggested_topic_content button:first-child{
+.suggested_topic_content button:first-child {
   color: green;
 }
-.suggested_topic_content button:last-child{
+.suggested_topic_content button:last-child {
   color: rgb(0, 145, 255);
+}
+
+.discuss_chat1{
+  padding: 5px 20px;
+  margin: 5px 0px;
+  font-size: 15px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: end;
+  text-align: justify;
+}
+.discuss_chat2 {
+  padding: 5px 20px;
+  margin: 5px 0px;
+  font-size: 15px;
+  display: flex;
+  align-items: flex-start;
+  text-align: justify;
+}
+.discuss_chat1 p {
+  background-color: aliceblue;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+.discuss_chat2 p {
+  background-color: rgb(244, 244, 244);
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.discuss_chat1 img{
+  width: 30px;
+  margin-left: 20px;
+  border-radius: 100px;
+}
+.discuss_chat2 img {
+  width: 30px;
+  margin-right: 20px;
+  border-radius: 100px;
 }
