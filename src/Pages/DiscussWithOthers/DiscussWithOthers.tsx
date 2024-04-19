@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MdOutlineHowToVote } from "react-icons/md";
 import "./DiscussWithOthers.css";
 import userIcon from "../../assets/icons/user-icon.png";
@@ -25,15 +25,20 @@ const DiscussWithOthers = () => {
 
   const [input, setInput] = useState<string>("");
   const [messages, setMessages] = useState<any[]>([]);
+  const msgEnd = useRef<HTMLDivElement>(null);
 
-  // const [messages, setMessages] = useState<{ message: string; senderEmail: string }[]>([]);
+  const scrollToBottom = () => {
+    if (msgEnd.current) {
+      msgEnd.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-  
-
-
-  
   useEffect(() => {
-    // setMessages([]);
+    scrollToBottom();
+  }, [messages]);
+
+
+  useEffect(() => {
     axios
       .get(baseUrl + `/discuss-chat/get-previous-messages`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -41,41 +46,35 @@ const DiscussWithOthers = () => {
       .then((res) => {
         setMessages([...messages, ...res.data.data]);
       });
-  }, []);
 
+    socket.on("connect", () => {
 
-
-  useEffect(() => {
-    socket.on("connect", () => console.log(socket.id));
+      console.log("connect is on")
+      
+    });
 
     socket.on("discuss-message", (message: any) => {
-      console.log(message, messages)
-      setMessages([...messages, message.data]);
+      setMessages((prevMessages) => [...prevMessages, message.data])
       setInput("");
     });
 
     socket.on("discuss-message-error", (message: any) => {
       console.log(message);
     });
+
+    // socket.disconnect();
   }, []);
 
-  // socket.disconnect();
 
   const handleSend = async () => {
-    const textInput = input;
-    setInput('');
-    setMessages([
-      ...messages,
-      {
-      message: textInput,
-      senderEmail: AuthEmail
-    }])
 
     await socket.emit("discuss-message", {
       message: input,
       token: `Bearer ${token}`,
     });
   };
+
+
 
   return (
     <>
@@ -141,6 +140,8 @@ const DiscussWithOthers = () => {
                         
                       </div>
                     ))}
+
+<div ref={msgEnd}/>
                   </div>
                   <div className="chat_footer">
                     <div className="inp">

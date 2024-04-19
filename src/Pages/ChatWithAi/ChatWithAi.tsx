@@ -14,37 +14,40 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 
 const ChatWithAi = () => {
-  const currentUser = useSelector((state: RootState) => state?.userData?.currentUser);
+  const currentUser = useSelector(
+    (state: RootState) => state?.userData?.currentUser
+  );
   const token = currentUser?.token;
   const msgEnd = useRef<HTMLDivElement>(null);
-  const [input, setInput] = useState<{ prompt: string }>({prompt: "",});
-  const [messages, setMessages] = useState<{ text: string; isBot: boolean }[]>([
-    { text: "Hi, I'm ChatGPT, a state of the art language model developed by openAI. I'm designed to understand and generate human like text based on the input i receive. You can ask me questions, have conversations, seek information, or even request assistance with various task, just let me know How can I help you today?", 
-    isBot: true },
+  const [input, setInput] = useState<{ prompt: string }>({ prompt: "" });
+  const [messages, setMessages] = useState<{ message: string; prompt: string }[]>([
+    {
+      message: "Hi, I'm ChatGPT, a state of the art language model developed by openAI. I'm designed to understand and generate human like text based on the input i receive. You can ask me questions, have conversations, seek information, or even request assistance with various task, just let me know How can I help you today?",
+      prompt: "",
+    },
   ]);
 
+  // const [messages, setMessages] = useState<{ text: string; isBot: boolean }[]>([
+  //   { text: "Hi, I'm ChatGPT, a state of the art language model developed by openAI. I'm designed to understand and generate human like text based on the input i receive. You can ask me questions, have conversations, seek information, or even request assistance with various task, just let me know How can I help you today?", 
+  //   isBot: true },
+  // ]);
 
-  useEffect(()=> {
-    msgEnd?.current?.scrollIntoView()
-  }, [messages])
 
 
   useEffect(() => {
-    axios.get(baseUrl + `/chat-with-ai/previous-all-responses`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then(res => {
-      console.log(res.data.data)
-      // setMessages([
-      //   { text: res.data.data.map(i => i.prompt), isBot: false },
-      //   { text: res.data.data.map(i => i.message ), isBot: true },
-      // ]);
-    })
-    
-  }, [])
-  
+    msgEnd?.current?.scrollIntoView();
+  }, [messages]);
 
-  // console.log(messages)
+
+  useEffect(() => {
+    axios
+      .get(baseUrl + `/chat-with-ai/previous-all-responses`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        setMessages([...messages, ...res.data.data]);
+      });
+  }, []);
 
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -53,15 +56,13 @@ const ChatWithAi = () => {
     });
   };
 
-
   const handleSend = async () => {
     const InputText = input.prompt;
 
-    setInput('');
-    setMessages([
-      ...messages,
-      {text: InputText, isBot:false}
-    ])
+    setInput("");
+    setMessages([...messages, { prompt: InputText, message: "" }]);
+
+    // setMessages([...messages, { text: InputText, isBot: false }]);
 
     await axios
       .post(baseUrl + `/chat-with-ai/get-response`, input, {
@@ -70,12 +71,16 @@ const ChatWithAi = () => {
       .then((res) => {
         setMessages([
           ...messages,
-          { text: InputText, isBot: false },
-          { text: res.data.data.message, isBot: true },
+          { message: res.data.data.message, prompt: InputText },
         ]);
+
+        // setMessages([
+        //   ...messages,
+        //   { text: InputText, isBot: false },
+        //   { text: res.data.data.message, isBot: true },
+        // ]);
       });
   };
-
 
 
   return (
@@ -120,18 +125,37 @@ const ChatWithAi = () => {
               <div className="col-md-8">
                 <div className="chat_with_ai_section_chat_container">
                   <div className="chats">
-                    
-
                     {messages.map((message) => (
                       <>
-                        <div className={message.isBot?  "chat bot" : "chat"}>
-                          <img src={message.isBot? chatGPTIcon : userIcon} alt="" />
+                        {message.prompt && <div className={ "chat"}>
+                          <img
+                            src={userIcon}
+                            alt=""
+                          />
+                          <p>{message.prompt}</p>
+                        </div>}
+                        {message.message && <div className={"chat bot"}>
+                          <img
+                            src={chatGPTIcon}
+                            alt=""
+                          />
+                          <p>{message.message}</p>
+                        </div>}
+                      </>
+                    ))}
+                    {/* {messages.map((message) => (
+                      <>
+                        <div className={message.isBot ? "chat bot" : "chat"}>
+                          <img
+                            src={message.isBot ? chatGPTIcon : userIcon}
+                            alt=""
+                          />
                           <p>{message.text}</p>
                         </div>
                       </>
-                    ))}
+                    ))} */}
 
-                    <div ref={msgEnd}/>
+                    <div ref={msgEnd} />
                   </div>
                   <div className="chat_footer">
                     <div className="inp">
@@ -157,8 +181,6 @@ const ChatWithAi = () => {
 };
 
 export default ChatWithAi;
-
-
 
 // import React, { useState } from "react";
 // import "./ChatWithAi.css";

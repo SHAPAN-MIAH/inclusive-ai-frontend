@@ -14,7 +14,6 @@ const Header = () => {
     (state: RootState) => state?.userData?.currentUser
   );
 
-  console.log(currentUser?.user?.data);
 
   const handleClearCurrentUser = () => {
     dispatch(clearCurrentUser());
