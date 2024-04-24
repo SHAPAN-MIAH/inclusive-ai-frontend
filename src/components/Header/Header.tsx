@@ -6,6 +6,8 @@ import { AppDispatch, RootState } from "../../store";
 import { clearCurrentUser } from "../../features/user/userSlice";
 import { useSelector } from "react-redux";
 import Dropdown from "react-bootstrap/Dropdown";
+import { clearChatWithAiAnalysisContinue } from "../../features/chatWithAiContinueSlice";
+import { clearChatWithAiAnalysisDone } from "../../features/ChatWithAiAnalysisDone";
 
 const Header = () => {
   const location = useLocation();
@@ -17,6 +19,8 @@ const Header = () => {
 
   const handleClearCurrentUser = () => {
     dispatch(clearCurrentUser());
+    dispatch(clearChatWithAiAnalysisContinue());
+    dispatch(clearChatWithAiAnalysisDone());
   };
 
   return (

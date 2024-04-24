@@ -102,7 +102,7 @@ const Login = () => {
       axios.post(`${baseUrl}/auth/verify-otp`, otpSubmitData).then((res) => {
         if (res.data.success === true) {
           dispatch(setCurrentUser(res?.data?.data));
-          navigate("/chat-with-ai");
+          navigate("/intro");
         }
       });
     } catch (error) {

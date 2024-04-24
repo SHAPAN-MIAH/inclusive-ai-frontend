@@ -1,0 +1,71 @@
+.vote_section {
+  height: 80vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+.vote_section_intro_text {
+  margin-top: 15px;
+  margin-right: 20px;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 7px;
+}
+.vote_section_intro_text span {
+  color: red;
+  font-size: 12px;
+  margin: 10px 0px;
+}
+
+.vote_content_proposal_info_container {
+  margin: 20px 20px 20px 0px;
+}
+
+.vote_proposal_update_content {
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  padding: 15px;
+}
+.vote_proposal_update_content p {
+  font-size: 14px;
+}
+.vote_proposal_update_content h5 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.vote_on_how_update_ai_model_content {
+  font-size: 14px;
+}
+.vote_on_how_update_ai_model_content h5 {
+  font-weight: 600;
+}
+.vote_on_how_update_ai_model_content ol li {
+  margin: 10px;
+}
+.proposal_info_container,
+.voting_power_content_container {
+  border: 1px solid gainsboro;
+  border-radius: 7px;
+  padding: 20px;
+  font-size: 13px;
+}
+.proposal_info_content {
+  margin-top: 10px;
+}
+.proposal_info_content small,
+.voting_power_content_container small {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vote_content_proposal_info_container button {
+  background: transparent;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  padding: 10px 20px;
+  width: 100%;
+  margin-top: 15px;
+  font-size: 14px;
+}

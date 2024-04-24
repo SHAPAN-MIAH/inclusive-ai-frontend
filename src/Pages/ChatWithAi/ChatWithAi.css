@@ -20,6 +20,35 @@
   opacity: 0.5;
 }
 
+
+.videoAnalysisContinueBtn,
+.videoAnalysisYesBtn,
+.videoAnalysisNoBtn,
+.videoAnalysisMaybeBtn {
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 7px 10px;
+  font-size: 13px;
+  margin-left: 10px;
+}
+.videoAnalysisYesBtn {
+  background-color: green;
+  color: #fff;
+}
+.videoAnalysisNoBtn {
+  background-color: red;
+  color: #fff;
+}
+.videoAnalysisMaybeBtn {
+  background-color: blue;
+  color: #fff;
+}
+.useFull_question{
+  margin-left: 10px;
+}
+
+
 .chat_with_ai_section_chat_container {
   min-height: calc(100vh-14rem);
   display: flex;
@@ -29,15 +58,18 @@
 }
 .chats {
   width: 100%;
-  height: 65vh;
+  height: 68.5vh;
   overflow: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
   padding: 0px 20px;
 }
+.chat::-webkit-scrollbar {
+  width: 5px;
+}
 .chat {
   padding: 10px 20px;
-  margin: 10px;
+  margin: 20px 10px;
   font-size: 15px;
   display: flex;
   align-items: flex-start;
@@ -53,9 +85,13 @@
   margin-right: 20px;
   border-radius: 5px;
 }
+.chat p {
+  margin-left: 10px;
+  margin-top: 5px;
+}
 .chat_footer {
   width: 100%;
-  margin-top: 35px;
+  margin-top: 10px;
   padding: 0px 30px;
   display: flex;
   flex-direction: column;

@@ -1,7 +1,8 @@
 .discuss_with_others_section_sideArticle_container {
   background-color: rgb(230, 230, 230);
   padding: 20px 40px;
-  border-radius: 10px;
+  border-radius: 7px;
+  height: 77.5vh;
 }
 .discuss_with_others_section_sideArticle_container h5 {
   font-weight: 600;
@@ -9,9 +10,15 @@
 }
 .suggested_topic_content {
   background-color: rgb(249, 249, 249);
-  padding: 20px;
+  padding: 20px 10px;
   border-radius: 10px;
   margin: 20px 0px;
+}
+.suggested_topic_content h5 {
+  font-size: 14px;
+}
+.suggested_topic_content p {
+  font-size: 14px;
 }
 .suggested_topic_content button {
   border: 1px solid gainsboro;
@@ -48,12 +55,15 @@
   width: fit-content;
   border-radius: 10px;
   padding: 10px 20px;
+  margin-right: 10px;
 }
 .discuss_chat2 p {
   background-color: rgb(244, 244, 244);
   width: fit-content;
   border-radius: 10px;
   padding: 10px 20px;
+  margin-right: 10px;
+
 }
 
 .discuss_chat1 img{
@@ -65,4 +75,18 @@
   width: 30px;
   margin-right: 20px;
   border-radius: 100px;
+}
+
+
+
+.profile-image {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  /* margin-left: 20px; */
 }

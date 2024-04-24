@@ -1,0 +1,74 @@
+.vote_cast_container {
+  margin-top: 25px;
+}
+
+.vote_cast_content {
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 12px;
+}
+
+.vote_input_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid gainsboro;
+  border-radius: 30px;
+  padding: 0px 40px;
+  margin-top: 20px;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.vote_input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+.vote_input span {
+  width: 40px;
+  height: 100%;
+  border: 1px solid gainsboro;
+  border-bottom: none;
+  border-top: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+.vote_input input {
+  width: 100px;
+  height: 100%;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
+#voteSubmitBtn {
+  background-color: aliceblue;
+  border-radius: 30px;
+  margin-bottom: 15px;
+}
+
+.quadratic_vote_square_box_container {
+  width: 205px;
+  border-radius: 10px;
+  margin-top: 57px;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+}
+
+.box-container {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+}
+
+.box-container .box {
+  border: 1px solid gainsboro;
+  background-color: black;
+  width: 10px;
+  height: 10px;
+}

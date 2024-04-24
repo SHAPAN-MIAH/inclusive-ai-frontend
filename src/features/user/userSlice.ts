@@ -5,6 +5,10 @@ interface User {
   user: {
     data: {
       email: string;
+      name: string | null;
+      role: string;
+      tokens: number;
+      votingDesignId: number;
     };
   };
   token: string;
@@ -24,7 +28,9 @@ const userSlice = createSlice({
   reducers: {
     setCurrentUser(state, action: PayloadAction<User>) {
       state.currentUser = action.payload;
+
     },
+    
     clearCurrentUser(state) {
       state.currentUser = null;
     },
