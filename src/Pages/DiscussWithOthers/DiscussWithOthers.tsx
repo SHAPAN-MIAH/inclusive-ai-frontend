@@ -76,9 +76,10 @@ const DiscussWithOthers = () => {
         document.querySelector("#chatInput");
       if (chatInput) {
         chatInput.focus();
-        const clipboardText = await navigator.clipboard.readText();
-        chatInput.value = clipboardText;
-        setInput(clipboardText)
+        // const clipboardText = await navigator.clipboard.readText();
+        // chatInput.value = clipboardText;
+        setInput(text)
+
       }
     }
   };

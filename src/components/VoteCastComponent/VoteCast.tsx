@@ -2,15 +2,17 @@ import axios from "axios";
 import { useState } from "react";
 import { baseUrl } from "../../assets/BaseUrl";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { AppDispatch, RootState } from "../../store";
 import "./VoteCast.css";
+import { setCurrentUser } from "../../features/user/userSlice";
+import { useDispatch } from "react-redux";
 
 const VoteCast = () => {
   const currentUser = useSelector(
     (state: RootState) => state?.userData?.currentUser
   );
-
-  const token = currentUser?.token;
+  const dispatch: AppDispatch = useDispatch();
+  const token:any = currentUser?.token;
   const voteTokens: any = currentUser?.user?.data?.tokens;
 
   const [voteQuantityOne, setVoteQuantityOne] = useState<number>(0);
@@ -187,7 +189,18 @@ const VoteCast = () => {
       {
         headers: { Authorization: `Bearer ${token}` },
       }
-    );
+    ).then(res => {
+      if(res){
+        axios.get(baseUrl + `/user/user-details`,  {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then(response => {
+          dispatch(setCurrentUser({
+            user: response.data, token
+           }));
+        })
+      }
+    })
   };
 
   return (

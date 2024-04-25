@@ -2,13 +2,17 @@ import axios from "axios";
 import { useState } from "react";
 import { baseUrl } from "../../../assets/BaseUrl";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
+import { AppDispatch, RootState } from "../../../store";
+import { setCurrentUser } from "../../../features/user/userSlice";
+import { useDispatch } from "react-redux";
 
 const QuadraticVoteCast = () => {
+  const dispatch: AppDispatch = useDispatch();
   const currentUser = useSelector(
     (state: RootState) => state?.userData?.currentUser
   );
-  const token = currentUser?.token;
+
+  const token:any = currentUser?.token;
   const voteTokens: any = currentUser?.user?.data?.tokens;
   // const [vote, setVote] = useState<number>(voteTokens);
   const [voteQuantityOne, setVoteQuantityOne] = useState<number>(0);
@@ -241,7 +245,15 @@ const QuadraticVoteCast = () => {
         setVoteQuantityThree(0)
         setVoteQuantityFour(0)
 
-
+        axios.get(baseUrl + `/user/user-details`,  {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then(response => {
+          console.log(response.data)
+          dispatch(setCurrentUser({
+            user: response.data, token
+           }));
+        })
       });
   };
 

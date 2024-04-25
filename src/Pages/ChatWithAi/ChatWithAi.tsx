@@ -16,10 +16,11 @@ import {  RootState } from "../../store";
 // import { setChatWithAiVideoAnalysisDone } from "../../features/ChatWithAiAnalysisDone";
 import video from "../../assets/videos/presidential-debate.mp4";
 import ProfileImage from "../DiscussWithOthers/ProfileImage";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ChatWithAi = () => {
   // const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
   const currentUser = useSelector(
     (state: RootState) => state?.userData?.currentUser
   );
@@ -57,6 +58,8 @@ const ChatWithAi = () => {
   const VideoAnalysisContinueHandler = () => {
     // dispatch(setChatWithAiVideoAnalysis(true));
     localStorage.setItem("ChatWithAiVideoAnalysisContinue", "true")
+
+    navigate("/intro");
   };
 
   const chatWithAiAnalysisContinue = localStorage.getItem("ChatWithAiVideoAnalysisContinue")
