@@ -10,16 +10,16 @@ import sendIcon from "../../assets/icons/send.svg";
 import axios from "axios";
 import { baseUrl } from "../../assets/BaseUrl";
 import { useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
-import { useDispatch } from "react-redux";
-import { setChatWithAiVideoAnalysis } from "../../features/chatWithAiContinueSlice";
-import { setChatWithAiVideoAnalysisDone } from "../../features/ChatWithAiAnalysisDone";
+import {  RootState } from "../../store";
+// import { useDispatch } from "react-redux";
+// import { setChatWithAiVideoAnalysis } from "../../features/chatWithAiContinueSlice";
+// import { setChatWithAiVideoAnalysisDone } from "../../features/ChatWithAiAnalysisDone";
 import video from "../../assets/videos/presidential-debate.mp4";
 import ProfileImage from "../DiscussWithOthers/ProfileImage";
 import { Link } from "react-router-dom";
 
 const ChatWithAi = () => {
-  const dispatch: AppDispatch = useDispatch();
+  // const dispatch: AppDispatch = useDispatch();
   const currentUser = useSelector(
     (state: RootState) => state?.userData?.currentUser
   );
