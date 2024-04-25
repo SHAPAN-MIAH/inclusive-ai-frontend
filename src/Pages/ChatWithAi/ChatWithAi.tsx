@@ -59,7 +59,7 @@ const ChatWithAi = () => {
     // dispatch(setChatWithAiVideoAnalysis(true));
     localStorage.setItem("ChatWithAiVideoAnalysisContinue", "true")
 
-    navigate("/intro");
+    navigate("/chat-with-ai");
   };
 
   const chatWithAiAnalysisContinue = localStorage.getItem("ChatWithAiVideoAnalysisContinue")
