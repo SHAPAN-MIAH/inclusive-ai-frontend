@@ -150,7 +150,7 @@ const ChatWithAi = () => {
             <div className="row">
               <div className="col-md-4">
                 <div className="chat_with_ai_section_sideArticle_container">
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between mb-4">
                     <h3>Welcome</h3>
                     <span>
                       <MdOutlineKeyboardDoubleArrowLeft />
