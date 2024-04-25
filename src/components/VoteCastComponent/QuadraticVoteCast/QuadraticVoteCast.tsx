@@ -22,7 +22,7 @@ const QuadraticVoteCast = () => {
 
   const handleIncreaseOne = () => {
     if (
-      voteTokens ===
+      voteTokens >=
       Math.pow(
         voteQuantityOne +
           voteQuantityTwo +
@@ -41,7 +41,7 @@ const QuadraticVoteCast = () => {
 
   const handleIncreaseTwo = () => {
     if (
-      voteTokens ===
+      voteTokens >=
       Math.pow(
         voteQuantityOne +
           voteQuantityTwo +
@@ -60,7 +60,7 @@ const QuadraticVoteCast = () => {
 
   const handleIncreaseThree = () => {
     if (
-      voteTokens ===
+      voteTokens >=
       Math.pow(
         voteQuantityOne +
           voteQuantityTwo +
@@ -80,7 +80,7 @@ const QuadraticVoteCast = () => {
 
   const handleIncreaseFour = () => {
     if (
-      voteTokens ===
+      voteTokens >=
       Math.pow(
         voteQuantityOne +
           voteQuantityTwo +
