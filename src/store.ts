@@ -20,8 +20,8 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import userReducer from './features/user/userSlice';
-import chatWithAiContinueSlice from './features/chatWithAiContinueSlice';
-import ChatWithAiAnalysisDone from './features/ChatWithAiAnalysisDone';
+// import chatWithAiContinueSlice from './features/chatWithAiContinueSlice';
+// import ChatWithAiAnalysisDone from './features/ChatWithAiAnalysisDone';
 
 
 const persistConfig = {
@@ -30,14 +30,14 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, userReducer);
-const persistedReducerTwo = persistReducer(persistConfig, chatWithAiContinueSlice);
-const persistedReducersThree = persistReducer(persistConfig, ChatWithAiAnalysisDone);
+// const persistedReducerTwo = persistReducer(persistConfig, chatWithAiContinueSlice);
+// const persistedReducersThree = persistReducer(persistConfig, ChatWithAiAnalysisDone);
 
 const store = configureStore({
   reducer: {
     userData: persistedReducer,
-    chatWithAiAnalysisContinue: persistedReducerTwo,
-    chatWithAiAnalysisDone: persistedReducersThree,
+    // chatWithAiAnalysisContinue: persistedReducerTwo,
+    // chatWithAiAnalysisDone: persistedReducersThree,
   },
 });
 
