@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./votes.css";
-import { BsChatDots, BsFillPeopleFill, BsQuestionCircle } from "react-icons/bs";
+import { BsFillPeopleFill, BsQuestionCircle } from "react-icons/bs";
 import { GiVote } from "react-icons/gi";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import VoteCast from "../../components/VoteCastComponent/VoteCast";
 import VoteIntroVideoPage from "../../components/IntroVideoComponent/VoteIntroVideo";
 import QuadraticVoteCast from "../../components/VoteCastComponent/QuadraticVoteCast/QuadraticVoteCast";
+import { Link } from "react-router-dom";
 
 const Votes = () => {
   const currentUser = useSelector(
@@ -131,13 +132,27 @@ const Votes = () => {
                         </span>
                       </small>
                       <small>
-                        Start Date<span></span> 01/02/24
+                        Start Date
+                        <span>
+                          {currentUser?.user.data.createdAt
+                            ? new Date(
+                                currentUser.user.data.createdAt
+                              ).toLocaleString()
+                            : ""}
+                        </span>
                       </small>
                       <small>
-                        End Date <span>01/02/24</span>
-                      </small>
-                      <small>
-                        Snapshot <span>*****</span>
+                        End Date{" "}
+                        <span>
+                          {currentUser?.user.data.createdAt
+                            ? new Date(
+                                new Date(
+                                  currentUser?.user.data.createdAt
+                                ).getTime() +
+                                  7 * 24 * 60 * 60 * 1000
+                              ).toLocaleString()
+                            : ""}
+                        </span>
                       </small>
                     </div>
                   </div>
@@ -151,12 +166,11 @@ const Votes = () => {
                   <button>
                     <GiVote /> What is "Proposal" and "Vote"?
                   </button>
-                  <button>
-                    <BsFillPeopleFill /> Discuss with others
-                  </button>
-                  <button>
-                    <BsChatDots /> Need Help with Voting?
-                  </button>
+                  <Link to={"/discuss-with-others"}>
+                    <button>
+                      <BsFillPeopleFill /> Discuss With Others
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="vote_cast_container_section">

@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 import "./introVideo.css";
 
@@ -16,10 +16,10 @@ const IntroVideo = () => {
             height="360"
             src="https://www.youtube.com/embed/oBU2p72SsrM"
             title="Inclusive AI — Intro"
-            frameborder ="0"
+            frameBorder ="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
           ></iframe>
         </div>
         <Link to={"/chat-with-ai"}>

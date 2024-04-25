@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MdOutlineHowToVote } from "react-icons/md";
 import "./DiscussWithOthers.css";
-import userIcon from "../../assets/icons/user-icon.png";
 import sendIcon from "../../assets/icons/send.svg";
 import io from "socket.io-client";
 import { useSelector } from "react-redux";
@@ -10,7 +9,7 @@ import axios from "axios";
 import { baseUrl } from "../../assets/BaseUrl";
 import ProfileImage from "./ProfileImage";
 
-const socket = io(`http://localhost:8000`, {
+const socket = io(`http://server.inclusiveai.site`, {
   withCredentials: true,
   transports: ["websocket"],
 });
@@ -136,7 +135,8 @@ const DiscussWithOthers = () => {
       token: `Bearer ${token}`,
     });
   };
-  console.log(messages);
+
+  
   return (
     <>
       <div className="discuss_with_others_section">
@@ -244,7 +244,7 @@ const DiscussWithOthers = () => {
                         ) : (
                           <>
                             <p>{message?.message}</p>
-                            <ProfileImage email={AuthEmail} />
+                            <ProfileImage email={AuthEmail as string} />
                           </>
                         )}
                       </div>

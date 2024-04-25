@@ -9,6 +9,7 @@ interface User {
       role: string;
       tokens: number;
       votingDesignId: number;
+      createdAt: string | Date
     };
   };
   token: string;

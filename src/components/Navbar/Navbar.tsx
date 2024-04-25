@@ -1,4 +1,4 @@
-import React from "react";
+
 import "./Navbar.css";
 import { BsChatDots, BsFillPeopleFill } from "react-icons/bs";
 import { MdOutlineHowToVote } from "react-icons/md";

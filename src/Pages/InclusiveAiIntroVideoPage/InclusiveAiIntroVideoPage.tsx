@@ -1,4 +1,4 @@
-import React from 'react';
+
 import IntroVideo from '../../components/IntroVideoComponent/IntroVideo';
 
 const InclusiveAiIntroVideoPage = () => {

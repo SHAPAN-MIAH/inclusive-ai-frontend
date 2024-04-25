@@ -1,4 +1,4 @@
-import React from "react";
+
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../Pages/Home/Home";
 import RootLayout from "../Layouts/RootLayout";
@@ -8,6 +8,7 @@ import DiscussWithOthers from "../Pages/DiscussWithOthers/DiscussWithOthers";
 import Votes from "../Pages/Votes/Votes";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import InclusiveAiIntroVideoPage from "../Pages/InclusiveAiIntroVideoPage/InclusiveAiIntroVideoPage";
+import WelcomePage from "../Pages/WelcomePage/WelcomePage";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
         path: "/",
         element: <ProtectedRoute><Home /></ProtectedRoute> ,
         children: [
+          {
+            path:"/",
+            element: <WelcomePage/>
+          },
           {
             path: "/chat-with-ai",
             element: <ChatWithAi/>

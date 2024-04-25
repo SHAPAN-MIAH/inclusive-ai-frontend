@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { baseUrl } from "../../assets/BaseUrl";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
@@ -208,7 +208,7 @@ const VoteCast = () => {
             </div>
             <div className="vote_input_content_container">
               <div className=" vote_input_content">
-                <span>Use the current model is</span>{" "}
+                <span>Use the current model as is</span>{" "}
                 <div className="vote_input">
                   <span onClick={handleDecreaseOne}>-</span>
                   <input
@@ -220,7 +220,7 @@ const VoteCast = () => {
                 </div>
               </div>
               <div className=" vote_input_content">
-                <span>Use additional user information</span>{" "}
+                <span>Context-Aware Adaptation</span>{" "}
                 <div className="vote_input">
                   <span onClick={handleDecreaseTwo}>-</span>
                   <input
@@ -232,7 +232,7 @@ const VoteCast = () => {
                 </div>
               </div>
               <div className=" vote_input_content">
-                <span>Track and apply user preference</span>{" "}
+                <span>User Feedback Loop Integration</span>{" "}
                 <div className="vote_input">
                   <span onClick={handleDecreaseThree}>-</span>
                   <input
@@ -244,7 +244,7 @@ const VoteCast = () => {
                 </div>
               </div>
               <div className=" vote_input_content">
-                <span>Add specific flags/tags in requests</span>{" "}
+                <span>Advanced Modality Integration Techniques</span>{" "}
                 <div className="vote_input">
                   <span onClick={handleDecreaseFour}>-</span>
                   <input

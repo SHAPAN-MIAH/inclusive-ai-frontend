@@ -1,4 +1,3 @@
-import React from "react";
 import "./header.css";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -43,8 +42,8 @@ const Header = () => {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">
-              <span onClick={handleClearCurrentUser}>logout</span>
+            <Dropdown.Item href="#/action-1" onClick={handleClearCurrentUser}>
+              <span >logout</span>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
