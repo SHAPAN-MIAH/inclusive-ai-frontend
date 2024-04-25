@@ -22,9 +22,9 @@ const QuadraticVoteCast = () => {
 
   const handleIncreaseOne = () => {
     if (
-      voteTokens >=
+      voteTokens <
       Math.pow(
-        voteQuantityOne +
+        voteQuantityOne + 1 +
           voteQuantityTwo +
           voteQuantityThree +
           voteQuantityFour,
@@ -41,9 +41,9 @@ const QuadraticVoteCast = () => {
 
   const handleIncreaseTwo = () => {
     if (
-      voteTokens >=
+      voteTokens <
       Math.pow(
-        voteQuantityOne +
+        voteQuantityOne + 1 +
           voteQuantityTwo +
           voteQuantityThree +
           voteQuantityFour,
@@ -55,14 +55,13 @@ const QuadraticVoteCast = () => {
     setVoteQuantityTwo((prevQuantity) =>
       prevQuantity < voteTokens ? prevQuantity + 1 : prevQuantity
     );
-    // setVote((prevVote) => (prevVote > 0 ? prevVote - 1 : 0));
   };
 
   const handleIncreaseThree = () => {
     if (
-      voteTokens >=
+      voteTokens <
       Math.pow(
-        voteQuantityOne +
+        voteQuantityOne +1+
           voteQuantityTwo +
           voteQuantityThree +
           voteQuantityFour,
@@ -80,9 +79,9 @@ const QuadraticVoteCast = () => {
 
   const handleIncreaseFour = () => {
     if (
-      voteTokens >=
+      voteTokens <
       Math.pow(
-        voteQuantityOne +
+        voteQuantityOne + 1 +
           voteQuantityTwo +
           voteQuantityThree +
           voteQuantityFour,
