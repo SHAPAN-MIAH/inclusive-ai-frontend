@@ -103,9 +103,13 @@ const VoteCast = () => {
     }
 
     const newQuantity = parseInt(event.target.value);
+    if(Number.isNaN(newQuantity)){
+      setVoteQuantityOne(0)
+      return
+    }
     if (
       !isNaN(newQuantity) &&
-      newQuantity >= 1 &&
+      newQuantity >= 0 &&
       newQuantity <= voteTokens &&
       voteTokens >
         newQuantity + voteQuantityTwo + voteQuantityThree + voteQuantityFour
@@ -124,9 +128,13 @@ const VoteCast = () => {
       return;
     }
     const newQuantity = parseInt(event.target.value);
+    if(Number.isNaN(newQuantity)){
+      setVoteQuantityTwo(0)
+      return
+    }
     if (
       !isNaN(newQuantity) &&
-      newQuantity >= 1 &&
+      newQuantity >= 0 &&
       newQuantity <= voteTokens &&
       voteTokens >
         newQuantity + voteQuantityOne + voteQuantityThree + voteQuantityFour
@@ -145,9 +153,13 @@ const VoteCast = () => {
       return;
     }
     const newQuantity = parseInt(event.target.value);
+    if(Number.isNaN(newQuantity)){
+      setVoteQuantityThree(0)
+      return
+    }
     if (
       !isNaN(newQuantity) &&
-      newQuantity >= 1 &&
+      newQuantity >= 0 &&
       newQuantity <= voteTokens &&
       voteTokens >
         newQuantity + voteQuantityTwo + voteQuantityOne + voteQuantityFour
@@ -166,9 +178,13 @@ const VoteCast = () => {
       return;
     }
     const newQuantity = parseInt(event.target.value);
+    if(Number.isNaN(newQuantity)){
+      setVoteQuantityFour(0)
+      return
+    }
     if (
       !isNaN(newQuantity) &&
-      newQuantity >= 1 &&
+      newQuantity >= 0 &&
       newQuantity <= voteTokens &&
       voteTokens >
         newQuantity + voteQuantityTwo + voteQuantityThree + voteQuantityOne

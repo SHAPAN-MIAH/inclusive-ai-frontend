@@ -12,9 +12,8 @@ const QuadraticVoteCast = () => {
     (state: RootState) => state?.userData?.currentUser
   );
 
-  const token:any = currentUser?.token;
+  const token: any = currentUser?.token;
   const voteTokens: any = currentUser?.user?.data?.tokens;
-  // const [vote, setVote] = useState<number>(voteTokens);
   const [voteQuantityOne, setVoteQuantityOne] = useState<number>(0);
   const [voteQuantityTwo, setVoteQuantityTwo] = useState<number>(0);
   const [voteQuantityThree, setVoteQuantityThree] = useState<number>(0);
@@ -23,13 +22,10 @@ const QuadraticVoteCast = () => {
   const handleIncreaseOne = () => {
     if (
       voteTokens <
-      Math.pow(
-        voteQuantityOne + 1 +
-          voteQuantityTwo +
-          voteQuantityThree +
-          voteQuantityFour,
-        2
-      )
+      Math.pow(voteQuantityOne + 1, 2) +
+        Math.pow(voteQuantityTwo, 2) +
+        Math.pow(voteQuantityThree, 2) +
+        Math.pow(voteQuantityFour, 2)
     ) {
       return;
     }
@@ -42,13 +38,10 @@ const QuadraticVoteCast = () => {
   const handleIncreaseTwo = () => {
     if (
       voteTokens <
-      Math.pow(
-        voteQuantityOne + 1 +
-          voteQuantityTwo +
-          voteQuantityThree +
-          voteQuantityFour,
-        2
-      )
+      Math.pow(voteQuantityOne, 2) +
+        Math.pow(voteQuantityTwo + 1, 2) +
+        Math.pow(voteQuantityThree, 2) +
+        Math.pow(voteQuantityFour, 2)
     ) {
       return;
     }
@@ -60,69 +53,55 @@ const QuadraticVoteCast = () => {
   const handleIncreaseThree = () => {
     if (
       voteTokens <
-      Math.pow(
-        voteQuantityOne +1+
-          voteQuantityTwo +
-          voteQuantityThree +
-          voteQuantityFour,
-        2
-      )
+      Math.pow(voteQuantityOne, 2) +
+        Math.pow(voteQuantityTwo, 2) +
+        Math.pow(voteQuantityThree + 1, 2) +
+        Math.pow(voteQuantityFour, 2)
     ) {
       return;
     }
     setVoteQuantityThree((prevQuantity) =>
       prevQuantity < voteTokens ? prevQuantity + 1 : prevQuantity
     );
-
-    // setVote((prevVote) => (prevVote > 0 ? prevVote - 1 : 0));
   };
 
   const handleIncreaseFour = () => {
     if (
       voteTokens <
-      Math.pow(
-        voteQuantityOne + 1 +
-          voteQuantityTwo +
-          voteQuantityThree +
-          voteQuantityFour,
-        2
-      )
+      Math.pow(voteQuantityOne, 2) +
+        Math.pow(voteQuantityTwo, 2) +
+        Math.pow(voteQuantityThree, 2) +
+        Math.pow(voteQuantityFour + 1, 2)
     ) {
       return;
     }
     setVoteQuantityFour((prevQuantity) =>
       prevQuantity < voteTokens ? prevQuantity + 1 : prevQuantity
     );
-
-    // setVote((prevVote) => (prevVote > 0 ? prevVote - 1 : 0));
   };
 
   const handleDecreaseOne = () => {
     if (voteQuantityOne >= 1) {
       setVoteQuantityOne((prevQuantity) => prevQuantity - 1);
     }
-    // setVote((prevVote) => prevVote + 1);
   };
 
   const handleDecreaseTwo = () => {
     if (voteQuantityTwo >= 1) {
       setVoteQuantityTwo((prevQuantity) => prevQuantity - 1);
     }
-    // setVote((prevVote) => prevVote + 1);
   };
 
   const handleDecreaseThree = () => {
     if (voteQuantityThree >= 1) {
       setVoteQuantityThree((prevQuantity) => prevQuantity - 1);
     }
-    // setVote((prevVote) => prevVote + 1);
   };
 
   const handleDecreaseFour = () => {
     if (voteQuantityFour >= 1) {
       setVoteQuantityFour((prevQuantity) => prevQuantity - 1);
     }
-    // setVote((prevVote) => prevVote + 1);
   };
 
   const handleChangeOne = (
@@ -136,15 +115,19 @@ const QuadraticVoteCast = () => {
     }
 
     const newQuantity = parseInt(event.target.value);
+    if(Number.isNaN(newQuantity)){
+      setVoteQuantityOne(0);
+      return
+    }
     if (
       !isNaN(newQuantity) &&
-      newQuantity >= 1 &&
+      newQuantity >= 0 &&
       newQuantity <= voteTokens &&
       voteTokens >=
-        Math.pow(
-          newQuantity + voteQuantityTwo + voteQuantityThree + voteQuantityFour,
-          2
-        )
+        Math.pow(newQuantity, 2) +
+          Math.pow(voteQuantityTwo, 2) +
+          Math.pow(voteQuantityThree, 2) +
+          Math.pow(voteQuantityFour, 2)
     ) {
       setVoteQuantityOne(newQuantity);
     }
@@ -160,15 +143,19 @@ const QuadraticVoteCast = () => {
       return;
     }
     const newQuantity = parseInt(event.target.value);
+    if(Number.isNaN(newQuantity)){
+      setVoteQuantityTwo(0)
+      return
+    }
     if (
       !isNaN(newQuantity) &&
-      newQuantity >= 1 &&
+      newQuantity >= 0 &&
       newQuantity <= voteTokens &&
       voteTokens >=
-        Math.pow(
-          newQuantity + voteQuantityOne + voteQuantityThree + voteQuantityFour,
-          2
-        )
+      Math.pow(voteQuantityOne, 2) +
+      Math.pow(newQuantity, 2) +
+      Math.pow(voteQuantityThree, 2) +
+      Math.pow(voteQuantityFour, 2)
     ) {
       setVoteQuantityTwo(newQuantity);
     }
@@ -184,15 +171,19 @@ const QuadraticVoteCast = () => {
       return;
     }
     const newQuantity = parseInt(event.target.value);
+    if(Number.isNaN(newQuantity)){
+      setVoteQuantityThree(0)
+      return
+    }
     if (
       !isNaN(newQuantity) &&
-      newQuantity >= 1 &&
+      newQuantity >= 0 &&
       newQuantity <= voteTokens &&
       voteTokens >=
-        Math.pow(
-          newQuantity + voteQuantityTwo + voteQuantityOne + voteQuantityFour,
-          2
-        )
+      Math.pow(voteQuantityOne, 2) +
+      Math.pow(voteQuantityTwo, 2) +
+      Math.pow(newQuantity, 2) +
+      Math.pow(voteQuantityFour, 2)
     ) {
       setVoteQuantityThree(newQuantity);
     }
@@ -208,21 +199,25 @@ const QuadraticVoteCast = () => {
       return;
     }
     const newQuantity = parseInt(event.target.value);
+    if(Number.isNaN(newQuantity)){
+      setVoteQuantityFour(0)
+      return
+    }
     if (
       !isNaN(newQuantity) &&
-      newQuantity >= 1 &&
+      newQuantity >= 0 &&
       newQuantity <= voteTokens &&
       voteTokens >=
-        Math.pow(
-          newQuantity + voteQuantityTwo + voteQuantityThree + voteQuantityOne,
-          2
-        )
+      Math.pow(voteQuantityOne, 2) +
+      Math.pow(voteQuantityTwo, 2) +
+      Math.pow(voteQuantityThree, 2) +
+      Math.pow(newQuantity, 2)
     ) {
       setVoteQuantityFour(newQuantity);
     }
   };
 
-  const [successMessage, setSuccessMessage] = useState("")
+  const [successMessage, setSuccessMessage] = useState("");
   const VoteSubmit = () => {
     axios
       .post(
@@ -239,20 +234,24 @@ const QuadraticVoteCast = () => {
       )
       .then((res) => {
         setSuccessMessage(res.data.message);
-        setVoteQuantityOne(0)
-        setVoteQuantityTwo(0)
-        setVoteQuantityThree(0)
-        setVoteQuantityFour(0)
+        setVoteQuantityOne(0);
+        setVoteQuantityTwo(0);
+        setVoteQuantityThree(0);
+        setVoteQuantityFour(0);
 
-        axios.get(baseUrl + `/user/user-details`,  {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then(response => {
-          // console.log(response?.data)
-          dispatch(setCurrentUser({
-            user: response?.data, token
-           }));
-        })
+        axios
+          .get(baseUrl + `/user/user-details`, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((response) => {
+            // console.log(response?.data)
+            dispatch(
+              setCurrentUser({
+                user: response?.data,
+                token,
+              })
+            );
+          });
       });
   };
 
@@ -263,13 +262,10 @@ const QuadraticVoteCast = () => {
       let i = 0;
       i <
       voteTokens -
-        Math.pow(
-          voteQuantityOne +
-            voteQuantityTwo +
-            voteQuantityThree +
-            voteQuantityFour,
-          2
-        );
+        (Math.pow(voteQuantityOne, 2) +
+          Math.pow(voteQuantityTwo, 2) +
+          Math.pow(voteQuantityThree, 2) +
+          Math.pow(voteQuantityFour, 2));
       i++
     ) {
       boxes.push(<div key={i} className="box"></div>);
@@ -288,13 +284,10 @@ const QuadraticVoteCast = () => {
                 <small>
                   Vote remaining ={" "}
                   {voteTokens -
-                    Math.pow(
-                      voteQuantityOne +
-                        voteQuantityTwo +
-                        voteQuantityThree +
-                        voteQuantityFour,
-                      2
-                    )}
+                    (Math.pow(voteQuantityOne, 2) +
+                      Math.pow(voteQuantityTwo, 2) +
+                      Math.pow(voteQuantityThree, 2) +
+                      Math.pow(voteQuantityFour, 2))}
                 </small>
               </div>
               <div className="vote_input_content_container">
@@ -346,7 +339,9 @@ const QuadraticVoteCast = () => {
                     <span onClick={handleIncreaseFour}>+</span>
                   </div>
                 </div>
-                <p className="vote_submit_success_message text-success mx-2 mt-3">{successMessage}</p>
+                <p className="vote_submit_success_message text-success mx-2 mt-3">
+                  {successMessage}
+                </p>
                 <button id="voteSubmitBtn" onClick={VoteSubmit}>
                   VOTE
                 </button>
@@ -355,26 +350,10 @@ const QuadraticVoteCast = () => {
           </div>
         </div>
         <div className="col-md-5">
-        <div className="quadratic_vote_square_box_container">
-              <div className="box-container">{renderBoxes()}</div>
-            </div>
-          {/* {voteTokens -
-            Math.pow(
-              voteQuantityOne +
-                voteQuantityTwo +
-                voteQuantityThree +
-                voteQuantityFour,
-              2
-            ) !=
-          0 ? (
-            <div className="quadratic_vote_square_box_container">
-              <div className="box-container">{renderBoxes()}</div>
-            </div>
-          ) : (
-            <p className="text-danger mt-5 pt-5">
-              You don't have any vote tokens remaining.
-            </p>
-          )} */}
+          <div className="quadratic_vote_square_box_container">
+            <div className="box-container">{renderBoxes()}</div>
+          </div>
+         
         </div>
       </div>
     </>
