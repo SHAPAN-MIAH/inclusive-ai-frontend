@@ -248,9 +248,9 @@ const QuadraticVoteCast = () => {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then(response => {
-          console.log(response.data)
+          // console.log(response?.data)
           dispatch(setCurrentUser({
-            user: response.data, token
+            user: response?.data, token
            }));
         })
       });

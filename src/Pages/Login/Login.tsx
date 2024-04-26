@@ -44,7 +44,7 @@ const Login = () => {
     try {
       axios.post(`${baseUrl}/auth/request-otp`, state.user).then((res) => {
         
-        if (res.data.success === true) {
+        if (res?.data?.success === true) {
           setOtpSuccessStatus(true);
         }
       });
@@ -79,7 +79,7 @@ const Login = () => {
 
   // otp resend request function........................
   const resendOtpData = {
-    email: state.user.email,
+    email: state?.user?.email,
   };
 
   const resendOTP = () => {
@@ -93,14 +93,14 @@ const Login = () => {
 
   // otp submit function.....................
   const otpSubmitData = {
-    email: `${state.user.email}`,
+    email: `${state?.user?.email}`,
     otp: `${otp}`,
   };
 
   const otpSubmit = () => {
     try {
       axios.post(`${baseUrl}/auth/verify-otp`, otpSubmitData).then((res) => {
-        if (res.data.success === true) {
+        if (res?.data?.success === true) {
           dispatch(setCurrentUser(res?.data?.data));
           navigate("/intro");
         }

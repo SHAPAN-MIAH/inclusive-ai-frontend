@@ -23,9 +23,8 @@ function App() {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then(res => {
-      console.log(res.data)
        dispatch(setCurrentUser({
-        user: res.data, token
+        user: res?.data, token
        }));
     })
 
