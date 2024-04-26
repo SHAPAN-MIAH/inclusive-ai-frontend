@@ -1,0 +1,26 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+.download_pdf_btn{
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px 0px;
+  background-color: transparent;
+  transition: all .3s;
+}
+.download_pdf_btn:hover{
+  background-color: blue;
+  color: #fff;
+}

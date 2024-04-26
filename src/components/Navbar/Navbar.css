@@ -12,17 +12,25 @@
   padding: 5px;
   margin-bottom: 0px;
 }
-.menu li {
+.menu_with_admin {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  list-style: none;
+  padding: 5px;
+  margin-bottom: 0px;
+}
+.menu li, .menu_with_admin li {
   width: 100%;
   text-align: center;
   color: rgb(50, 50, 50);
   padding: 5px;
   
 }
-.menu li:hover, .active li{
+.menu li:hover, .menu_with_admin li:hover, .active li{
   background-color: aliceblue;
   border-radius: 5px;
 }
-.menu a{
+.menu a , .menu_with_admin a{
   text-decoration: none;
 }
