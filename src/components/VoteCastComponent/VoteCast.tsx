@@ -12,7 +12,7 @@ const VoteCast = () => {
     (state: RootState) => state?.userData?.currentUser
   );
   const dispatch: AppDispatch = useDispatch();
-  const token:any = currentUser?.token;
+  const token: any = currentUser?.token;
   const voteTokens: any = currentUser?.user?.data?.tokens;
 
   const [voteQuantityOne, setVoteQuantityOne] = useState<number>(0);
@@ -103,9 +103,9 @@ const VoteCast = () => {
     }
 
     const newQuantity = parseInt(event.target.value);
-    if(Number.isNaN(newQuantity)){
-      setVoteQuantityOne(0)
-      return
+    if (Number.isNaN(newQuantity)) {
+      setVoteQuantityOne(0);
+      return;
     }
     if (
       !isNaN(newQuantity) &&
@@ -128,9 +128,9 @@ const VoteCast = () => {
       return;
     }
     const newQuantity = parseInt(event.target.value);
-    if(Number.isNaN(newQuantity)){
-      setVoteQuantityTwo(0)
-      return
+    if (Number.isNaN(newQuantity)) {
+      setVoteQuantityTwo(0);
+      return;
     }
     if (
       !isNaN(newQuantity) &&
@@ -153,9 +153,9 @@ const VoteCast = () => {
       return;
     }
     const newQuantity = parseInt(event.target.value);
-    if(Number.isNaN(newQuantity)){
-      setVoteQuantityThree(0)
-      return
+    if (Number.isNaN(newQuantity)) {
+      setVoteQuantityThree(0);
+      return;
     }
     if (
       !isNaN(newQuantity) &&
@@ -178,9 +178,9 @@ const VoteCast = () => {
       return;
     }
     const newQuantity = parseInt(event.target.value);
-    if(Number.isNaN(newQuantity)){
-      setVoteQuantityFour(0)
-      return
+    if (Number.isNaN(newQuantity)) {
+      setVoteQuantityFour(0);
+      return;
     }
     if (
       !isNaN(newQuantity) &&
@@ -193,38 +193,60 @@ const VoteCast = () => {
     }
   };
 
-
-  const [successMessage, setSuccessMessage] = useState("")
+  const [successMessage, setSuccessMessage] = useState("");
 
   const VoteSubmit = () => {
-    axios.post(
-      baseUrl + `/vote-submission/create`,
-      {
-        choice_1: voteQuantityOne,
-        choice_2: voteQuantityTwo,
-        choice_3: voteQuantityThree,
-        choice_4: voteQuantityFour,
-      },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    ).then(res => {
-      setSuccessMessage(res.data.message);
-      setVoteQuantityOne(0)
-        setVoteQuantityTwo(0)
-        setVoteQuantityThree(0)
-        setVoteQuantityFour(0)
-      if(res){
-        axios.get(baseUrl + `/user/user-details`,  {
+    const hideBtn: Element | null | any =
+      document.querySelector("#voteSubmitBtn");
+    const showBtn: Element | null | any =
+      document.querySelector("#voteSubmittingBtn");
+    if (hideBtn) {
+      hideBtn.style.display = "none";
+    }
+    if (showBtn) {
+      showBtn.style.display = "block";
+    }
+    axios
+      .post(
+        baseUrl + `/vote-submission/create`,
+        {
+          choice_1: voteQuantityOne,
+          choice_2: voteQuantityTwo,
+          choice_3: voteQuantityThree,
+          choice_4: voteQuantityFour,
+        },
+        {
           headers: { Authorization: `Bearer ${token}` },
-        })
-        .then(response => {
-          dispatch(setCurrentUser({
-            user: response.data, token
-           }));
-        })
-      }
-    })
+        }
+      )
+      .then((res) => {
+        setSuccessMessage(res.data.message);
+        setVoteQuantityOne(0);
+        setVoteQuantityTwo(0);
+        setVoteQuantityThree(0);
+        setVoteQuantityFour(0);
+        if (res) {
+          axios
+            .get(baseUrl + `/user/user-details`, {
+              headers: { Authorization: `Bearer ${token}` },
+            })
+            .then((response) => {
+              dispatch(
+                setCurrentUser({
+                  user: response.data,
+                  token,
+                })
+              );
+
+              if (hideBtn) {
+                hideBtn.style.display = "block";
+              }
+              if (showBtn) {
+                showBtn.style.display = "none";
+              }
+            });
+        }
+      });
   };
 
   return (
@@ -292,7 +314,10 @@ const VoteCast = () => {
                   <span onClick={handleIncreaseFour}>+</span>
                 </div>
               </div>
-              <p className="vote_submit_success_message text-success mx-2 mt-3">{successMessage}</p>
+              <p className="vote_submit_success_message text-success mx-2 mt-3">
+                {successMessage}
+              </p>
+              <button id="voteSubmittingBtn">Vote Submitting...</button>
               <button id="voteSubmitBtn" onClick={VoteSubmit}>
                 VOTE
               </button>

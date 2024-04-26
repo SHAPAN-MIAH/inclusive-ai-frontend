@@ -54,6 +54,14 @@
   transition: all .2s;
   color: white;
 }
+#voteSubmittingBtn{
+  background-color: #2859e0;
+  border-radius: 30px;
+  margin-bottom: 15px;
+  transition: all .2s;
+  color: white;
+  display: none;
+}
 #voteSubmitBtn:hover {
   background-color: aliceblue;
   color: black;

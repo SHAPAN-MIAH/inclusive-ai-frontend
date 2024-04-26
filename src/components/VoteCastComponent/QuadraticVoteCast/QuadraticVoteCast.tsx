@@ -219,6 +219,16 @@ const QuadraticVoteCast = () => {
 
   const [successMessage, setSuccessMessage] = useState("");
   const VoteSubmit = () => {
+    const hideBtn: Element | null | any =
+      document.querySelector("#voteSubmitBtn");
+    const showBtn: Element | null | any =
+      document.querySelector("#voteSubmittingBtn");
+    if (hideBtn) {
+      hideBtn.style.display = "none";
+    }
+    if (showBtn) {
+      showBtn.style.display = "block";
+    }
     axios
       .post(
         baseUrl + `/vote-submission/create`,
@@ -251,6 +261,13 @@ const QuadraticVoteCast = () => {
                 token,
               })
             );
+
+            if (hideBtn) {
+              hideBtn.style.display = "block";
+            }
+            if (showBtn) {
+              showBtn.style.display = "none";
+            }
           });
       });
   };
@@ -345,6 +362,7 @@ const QuadraticVoteCast = () => {
                 <button id="voteSubmitBtn" onClick={VoteSubmit}>
                   VOTE
                 </button>
+                <button id="voteSubmittingBtn">Vote Submitting...</button>
               </div>
             </div>
           </div>
