@@ -1,17 +1,15 @@
-import WeightedVoteVideo from "../../assets/videos/Weighted voting.mp4";
-import quadraticVoteVideo from "../../assets/videos/Idea Ink _ What is Quadratic Voting_.mp4";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import { useRef, useState } from "react";
+import WeightedVoteVideo from "../../assets/videos/Weighted voting.mp4"
+import quadraticVoteVideo from "../../assets/videos/Idea Ink _ What is Quadratic Voting_.mp4"
+import { useSelector } from "react-redux"
+import { RootState } from "../../store"
+import { useRef } from "react"
 
-const VoteIntroVideoPage = ({setVoteContinueBtnEnable}) => {
-
-  
+const VoteIntroVideoPage = ({ setVoteContinueBtnEnable }: any) => {
   const currentUser = useSelector(
     (state: RootState) => state?.userData?.currentUser
-  );
+  )
 
-  const videoRef = useRef(null);
+  const videoRef = useRef(null)
   // const [isPlaying, setIsPlaying] = useState(false);
   // const [isEnded, setIsEnded] = useState(false);
 
@@ -22,8 +20,8 @@ const VoteIntroVideoPage = ({setVoteContinueBtnEnable}) => {
 
   const handleEnded = () => {
     // setIsPlaying(false);
-    setVoteContinueBtnEnable(true);
-  };
+    setVoteContinueBtnEnable(true)
+  }
 
   // console.log(isEnded)
 
@@ -75,7 +73,7 @@ const VoteIntroVideoPage = ({setVoteContinueBtnEnable}) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default VoteIntroVideoPage;
+export default VoteIntroVideoPage
