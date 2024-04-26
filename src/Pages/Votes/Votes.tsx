@@ -8,6 +8,7 @@ import VoteCast from "../../components/VoteCastComponent/VoteCast";
 import VoteIntroVideoPage from "../../components/IntroVideoComponent/VoteIntroVideo";
 import QuadraticVoteCast from "../../components/VoteCastComponent/QuadraticVoteCast/QuadraticVoteCast";
 import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const Votes = () => {
   const currentUser = useSelector(
@@ -20,11 +21,12 @@ const Votes = () => {
     setIntroDone(true);
   };
 
-  const [voteContinueBtnEnable, setVoteContinueBtnEnable] = useState<boolean>(false);
+  const [voteContinueBtnEnable, setVoteContinueBtnEnable] =
+    useState<boolean>(false);
 
   const introVideoFirstRequireHandler = () => {
-    alert("please see intro video first.")
-  }
+    toast.error("Please see the intro video first then press continue.");
+  };
 
   return (
     <>
@@ -192,15 +194,25 @@ const Votes = () => {
           </>
         ) : (
           <div className="text-center">
-            <VoteIntroVideoPage setVoteContinueBtnEnable={ setVoteContinueBtnEnable}/>
-            {voteContinueBtnEnable ? <button onClick={introDoneHandler} className="continue_btn">
-              Continue
-            </button> : <button onClick={introVideoFirstRequireHandler} className="continue_btn">
-              Continue
-            </button>}
+            <VoteIntroVideoPage
+              setVoteContinueBtnEnable={setVoteContinueBtnEnable}
+            />
+            {voteContinueBtnEnable ? (
+              <button onClick={introDoneHandler} className="continue_btn">
+                Continue
+              </button>
+            ) : (
+              <button
+                onClick={introVideoFirstRequireHandler}
+                className="continue_btn"
+              >
+                Continue
+              </button>
+            )}
           </div>
         )}
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 };

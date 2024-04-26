@@ -177,6 +177,9 @@ const VoteCast = () => {
     }
   };
 
+
+  const [successMessage, setSuccessMessage] = useState("")
+
   const VoteSubmit = () => {
     axios.post(
       baseUrl + `/vote-submission/create`,
@@ -190,6 +193,11 @@ const VoteCast = () => {
         headers: { Authorization: `Bearer ${token}` },
       }
     ).then(res => {
+      setSuccessMessage(res.data.message);
+      setVoteQuantityOne(0)
+        setVoteQuantityTwo(0)
+        setVoteQuantityThree(0)
+        setVoteQuantityFour(0)
       if(res){
         axios.get(baseUrl + `/user/user-details`,  {
           headers: { Authorization: `Bearer ${token}` },
@@ -268,6 +276,7 @@ const VoteCast = () => {
                   <span onClick={handleIncreaseFour}>+</span>
                 </div>
               </div>
+              <p className="vote_submit_success_message text-success mx-2 mt-3">{successMessage}</p>
               <button id="voteSubmitBtn" onClick={VoteSubmit}>
                 VOTE
               </button>

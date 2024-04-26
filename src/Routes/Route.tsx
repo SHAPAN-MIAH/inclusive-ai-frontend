@@ -8,7 +8,6 @@ import DiscussWithOthers from "../Pages/DiscussWithOthers/DiscussWithOthers";
 import Votes from "../Pages/Votes/Votes";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import InclusiveAiIntroVideoPage from "../Pages/InclusiveAiIntroVideoPage/InclusiveAiIntroVideoPage";
-// import WelcomePage from "../Pages/WelcomePage/WelcomePage";
 
 const router = createBrowserRouter([
   {

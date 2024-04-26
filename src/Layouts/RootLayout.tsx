@@ -3,7 +3,7 @@ import "./Layout.css";
 
 const RootLayout = () => {
   return (
-    <div className="layout container">
+    <div className="layout container-fluid">
       <Outlet />
     </div>
   );

@@ -8,6 +8,7 @@ import { RootState } from "../../store";
 import axios from "axios";
 import { baseUrl } from "../../assets/BaseUrl";
 import ProfileImage from "./ProfileImage";
+import { Link } from "react-router-dom";
 
 const socket = io(`http://server.inclusiveai.site`, {
   withCredentials: true,
@@ -142,7 +143,7 @@ const DiscussWithOthers = () => {
     <>
       <div className="discuss_with_others_section">
         <div className="discuss_with_others_section_container">
-          <div className="container mt-3 p-0">
+          <div className=" mt-3 p-0">
             <div className="row">
               <div className="col-md-4">
                 <div className="discuss_with_others_section_sideArticle_container">
@@ -216,12 +217,11 @@ const DiscussWithOthers = () => {
                   )}
 
                   <div className="discuss_with_others_section_sideArticle_btn_container mb-3">
-                    <button>
-                      <span>
+                   <Link to={'/votes'}>
+                   <button>
                         <MdOutlineHowToVote /> Vote on topic
-                      </span>
-                      <br /> Stereotypical Generative AI
                     </button>
+                   </Link>
                   </div>
                 </div>
               </div>

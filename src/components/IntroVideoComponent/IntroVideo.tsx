@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import "./introVideo.css";
 import { useRef, useState } from "react";
+import introVideo from "../../assets/videos/Inclusive AI — Intro (1).mp4";
+import toast, { Toaster } from "react-hot-toast";
 
 const IntroVideo = () => {
   const videoRef = useRef(null);
@@ -10,7 +12,7 @@ const IntroVideo = () => {
   };
 
   const introVideoFirstRequire = () => {
-    alert("please see intro video first.");
+    toast.error("Please see the intro video first then press continue.");
   };
 
   return (
@@ -21,18 +23,21 @@ const IntroVideo = () => {
       <div className="intro_video_content">
         <h3>Watch the intro video</h3>
         <div>
-          <iframe
+          <video
+            aria-label="Video"
             ref={videoRef}
             onEnded={handleEnded}
-            width="640"
-            height="360"
-            src="https://www.youtube.com/embed/oBU2p72SsrM"
-            title="Inclusive AI — Intro"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          ></iframe>
+            controls
+            style={{
+              borderRadius: "5px",
+              width: "auto",
+              height: "300px",
+              boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
+              marginLeft: "40px",
+            }}
+          >
+            <source type="video/webm" src={introVideo} />
+          </video>
         </div>
         {isEnded ? (
           <Link to={"/chat-with-ai"}>
@@ -44,6 +49,8 @@ const IntroVideo = () => {
           </button>
         )}
       </div>
+
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };

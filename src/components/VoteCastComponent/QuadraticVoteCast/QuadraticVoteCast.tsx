@@ -355,7 +355,10 @@ const QuadraticVoteCast = () => {
           </div>
         </div>
         <div className="col-md-5">
-          {voteTokens -
+        <div className="quadratic_vote_square_box_container">
+              <div className="box-container">{renderBoxes()}</div>
+            </div>
+          {/* {voteTokens -
             Math.pow(
               voteQuantityOne +
                 voteQuantityTwo +
@@ -371,7 +374,7 @@ const QuadraticVoteCast = () => {
             <p className="text-danger mt-5 pt-5">
               You don't have any vote tokens remaining.
             </p>
-          )}
+          )} */}
         </div>
       </div>
     </>
