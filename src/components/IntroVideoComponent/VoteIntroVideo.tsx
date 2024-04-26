@@ -2,12 +2,30 @@ import WeightedVoteVideo from "../../assets/videos/Weighted voting.mp4";
 import quadraticVoteVideo from "../../assets/videos/Idea Ink _ What is Quadratic Voting_.mp4";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import { useRef, useState } from "react";
 
-const VoteIntroVideoPage = () => {
+const VoteIntroVideoPage = ({setVoteContinueBtnEnable}) => {
+
+  
   const currentUser = useSelector(
     (state: RootState) => state?.userData?.currentUser
   );
 
+  const videoRef = useRef(null);
+  // const [isPlaying, setIsPlaying] = useState(false);
+  // const [isEnded, setIsEnded] = useState(false);
+
+  // const handlePlay = () => {
+  //   setIsPlaying(true);
+  //   setIsEnded(false);
+  // };
+
+  const handleEnded = () => {
+    // setIsPlaying(false);
+    setVoteContinueBtnEnable(true);
+  };
+
+  // console.log(isEnded)
 
   return (
     <div className="intro_video_section_page">
@@ -17,9 +35,11 @@ const VoteIntroVideoPage = () => {
           {currentUser?.user.data.votingDesignId === 1 ||
           currentUser?.user.data.votingDesignId === 2 ? (
             <div>
-
               <video
                 aria-label="Video"
+                ref={videoRef}
+                // onPlay={handlePlay}
+                onEnded={handleEnded}
                 controls
                 style={{
                   borderRadius: "5px",
@@ -36,6 +56,9 @@ const VoteIntroVideoPage = () => {
             <div>
               <video
                 aria-label="Video"
+                ref={videoRef}
+                // onPlay={handlePlay}
+                onEnded={handleEnded}
                 controls
                 style={{
                   borderRadius: "5px",

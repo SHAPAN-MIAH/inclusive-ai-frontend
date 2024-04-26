@@ -20,6 +20,12 @@ const Votes = () => {
     setIntroDone(true);
   };
 
+  const [voteContinueBtnEnable, setVoteContinueBtnEnable] = useState<boolean>(false);
+
+  const introVideoFirstRequireHandler = () => {
+    alert("please see intro video first.")
+  }
+
   return (
     <>
       <div className="vote_section">
@@ -186,10 +192,12 @@ const Votes = () => {
           </>
         ) : (
           <div className="text-center">
-            <VoteIntroVideoPage />
-            <button onClick={introDoneHandler} className="continue_btn">
+            <VoteIntroVideoPage setVoteContinueBtnEnable={ setVoteContinueBtnEnable}/>
+            {voteContinueBtnEnable ? <button onClick={introDoneHandler} className="continue_btn">
               Continue
-            </button>
+            </button> : <button onClick={introVideoFirstRequireHandler} className="continue_btn">
+              Continue
+            </button>}
           </div>
         )}
       </div>
