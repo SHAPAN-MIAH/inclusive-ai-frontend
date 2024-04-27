@@ -139,14 +139,16 @@ const ChatWithAi = () => {
   );
 
   useEffect(() => {
-    axios
+    if(token){
+      axios
       .get(baseUrl + `/chat-with-ai/previous-all-responses`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
         setMessages([...messages, ...res.data.data]);
       });
-  }, []);
+    }
+  }, [token]);
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setInput({
