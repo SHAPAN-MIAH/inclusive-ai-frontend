@@ -47,11 +47,11 @@ const Votes = () => {
                   presented.
                   <br />
                   <span>
-                    {currentUser?.user?.data?.tokens == 100
+                    {currentUser?.user?.data?.originalTokensAssigned == 100
                       ? "You have 100 votes to allocate among those choices."
-                      : currentUser?.user?.data?.tokens == 25
+                      : currentUser?.user?.data?.originalTokensAssigned == 25
                       ? "You have 25 votes to allocate among those choice."
-                      : currentUser?.user?.data?.tokens == 400
+                      : currentUser?.user?.data?.originalTokensAssigned == 400
                       ? "You have 400 votes to allocate among those choice/ You are one of the 20% of the members in this group that have more voting power than the remaining 80% of the members in this group."
                       : ""}
                   </span>

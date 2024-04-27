@@ -8,6 +8,7 @@ interface User {
       name: string | null;
       role: string;
       tokens: number;
+      originalTokensAssigned: number;
       votingDesignId: number;
       createdAt: string | Date
     };
