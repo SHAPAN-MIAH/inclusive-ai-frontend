@@ -295,7 +295,7 @@ const QuadraticVoteCast = () => {
       <div className="row">
         <div className="col-md-7">
           <div className="vote_cast_container">
-            <h6>Cast your votes! you must use all votes.</h6>
+            <h6>Cast your votes! <b>You can vote one time</b>. And must use all votes.</h6>
             <div className="vote_cast_content">
               <div className="vote_remaining">
                 <small>

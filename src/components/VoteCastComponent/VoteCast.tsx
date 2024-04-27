@@ -95,12 +95,12 @@ const VoteCast = () => {
   const handleChangeOne = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    if (
-      voteTokens ===
-      voteQuantityOne + voteQuantityTwo + voteQuantityThree + voteQuantityFour
-    ) {
-      return;
-    }
+    // if (
+    //   voteTokens ===
+    //   voteQuantityOne + voteQuantityTwo + voteQuantityThree + voteQuantityFour
+    // ) {
+    //   return;
+    // }
 
     const newQuantity = parseInt(event.target.value);
     if (Number.isNaN(newQuantity)) {
@@ -110,7 +110,7 @@ const VoteCast = () => {
     if (
       !isNaN(newQuantity) &&
       newQuantity >= 0 &&
-      newQuantity <= voteTokens &&
+      // newQuantity <= voteTokens &&
       voteTokens >
         newQuantity + voteQuantityTwo + voteQuantityThree + voteQuantityFour
     ) {
@@ -121,12 +121,12 @@ const VoteCast = () => {
   const handleChangeTwo = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    if (
-      voteTokens ===
-      voteQuantityOne + voteQuantityTwo + voteQuantityThree + voteQuantityFour
-    ) {
-      return;
-    }
+    // if (
+    //   voteTokens ===
+    //   voteQuantityOne + voteQuantityTwo + voteQuantityThree + voteQuantityFour
+    // ) {
+    //   return;
+    // }
     const newQuantity = parseInt(event.target.value);
     if (Number.isNaN(newQuantity)) {
       setVoteQuantityTwo(0);
@@ -135,7 +135,7 @@ const VoteCast = () => {
     if (
       !isNaN(newQuantity) &&
       newQuantity >= 0 &&
-      newQuantity <= voteTokens &&
+      // newQuantity <= voteTokens &&
       voteTokens >
         newQuantity + voteQuantityOne + voteQuantityThree + voteQuantityFour
     ) {
@@ -146,12 +146,12 @@ const VoteCast = () => {
   const handleChangeThree = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    if (
-      voteTokens ===
-      voteQuantityOne + voteQuantityTwo + voteQuantityThree + voteQuantityFour
-    ) {
-      return;
-    }
+    // if (
+    //   voteTokens ===
+    //   voteQuantityOne + voteQuantityTwo + voteQuantityThree + voteQuantityFour
+    // ) {
+    //   return;
+    // }
     const newQuantity = parseInt(event.target.value);
     if (Number.isNaN(newQuantity)) {
       setVoteQuantityThree(0);
@@ -160,7 +160,7 @@ const VoteCast = () => {
     if (
       !isNaN(newQuantity) &&
       newQuantity >= 0 &&
-      newQuantity <= voteTokens &&
+      // newQuantity <= voteTokens &&
       voteTokens >
         newQuantity + voteQuantityTwo + voteQuantityOne + voteQuantityFour
     ) {
@@ -171,12 +171,12 @@ const VoteCast = () => {
   const handleChangeFour = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    if (
-      voteTokens ===
-      voteQuantityOne + voteQuantityTwo + voteQuantityThree + voteQuantityFour
-    ) {
-      return;
-    }
+    // if (
+    //   voteTokens ===
+    //   voteQuantityOne + voteQuantityTwo + voteQuantityThree + voteQuantityFour
+    // ) {
+    //   return;
+    // }
     const newQuantity = parseInt(event.target.value);
     if (Number.isNaN(newQuantity)) {
       setVoteQuantityFour(0);
@@ -185,7 +185,7 @@ const VoteCast = () => {
     if (
       !isNaN(newQuantity) &&
       newQuantity >= 0 &&
-      newQuantity <= voteTokens &&
+      // newQuantity <= voteTokens &&
       voteTokens >
         newQuantity + voteQuantityTwo + voteQuantityThree + voteQuantityOne
     ) {
@@ -253,7 +253,7 @@ const VoteCast = () => {
     <>
       <div className="col-md-8">
         <div className="vote_cast_container">
-          <h6>Cast your votes! you must use all votes.</h6>
+        <h6>Cast your votes! <b>You can vote one time</b>. And must use all votes.</h6>
           <div className="vote_cast_content">
             <div className="vote_remaining">
               <small>
