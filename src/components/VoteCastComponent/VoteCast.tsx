@@ -353,7 +353,7 @@ const VoteCast = () => {
           target="_blank"
         >
           <button
-            className="proposal_vote_definition_popup_close_btn"
+            className="proposal_vote_definition_popup_close_btn take_survey_btn"
             onClick={TakeSurveyPopupCloseHandler}
           >
             Take survey
