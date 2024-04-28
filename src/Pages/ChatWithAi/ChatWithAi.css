@@ -121,3 +121,13 @@
   outline: none;
   border: none;
 }
+
+
+@media screen and (max-width:768px) {
+  .chat_with_ai_section_sideArticle_container {
+    background-color: rgb(230, 230, 230);
+    padding: 20px 30px;
+    border-radius: 10px;
+    height: auto;
+  }
+}

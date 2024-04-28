@@ -194,6 +194,8 @@ const VoteCast = () => {
   };
 
   const [successMessage, setSuccessMessage] = useState("");
+  const take_survey_popup: Element | null | any =
+    document.querySelector(".take_survey_popup");
 
   const VoteSubmit = () => {
     const hideBtn: Element | null | any =
@@ -244,16 +246,28 @@ const VoteCast = () => {
               if (showBtn) {
                 showBtn.style.display = "none";
               }
+              if (take_survey_popup) {
+                take_survey_popup.style.display = "block";
+              }
             });
         }
       });
+  };
+
+  const TakeSurveyPopupCloseHandler = () => {
+    if (take_survey_popup) {
+      take_survey_popup.style.display = "none";
+    }
   };
 
   return (
     <>
       <div className="col-md-8">
         <div className="vote_cast_container">
-        <h6>Cast your votes! <b>You can vote one time</b>. And must use all votes.</h6>
+          <h6>
+            Cast your votes! <b>You can vote one time</b>. And must use all
+            votes.
+          </h6>
           <div className="vote_cast_content">
             <div className="vote_remaining">
               <small>
@@ -324,6 +338,27 @@ const VoteCast = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="take_survey_popup">
+        <p>
+          You successfully completed first part of the study, now Join the
+          survey and complete it.
+        </p>
+
+        <br />
+        <br />
+
+        <a
+          href="https://illinois.qualtrics.com/jfe/form/SV_aY8DrECtjmVpdga"
+          target="_blank"
+        >
+          <button
+            className="proposal_vote_definition_popup_close_btn"
+            onClick={TakeSurveyPopupCloseHandler}
+          >
+            Take survey
+          </button>
+        </a>
       </div>
     </>
   );

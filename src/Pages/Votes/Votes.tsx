@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./votes.css";
-import { BsFillPeopleFill, BsQuestionCircle } from "react-icons/bs";
+import { BsChatDots, BsFillPeopleFill, BsQuestionCircle } from "react-icons/bs";
 import { GiVote } from "react-icons/gi";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
@@ -27,6 +27,23 @@ const Votes = () => {
   const introVideoFirstRequireHandler = () => {
     toast.error("Please see the intro video first then press continue.");
   };
+
+  const proposal_vote_definition: Element | null | any = document.querySelector(
+    ".proposal_vote_definition"
+  );
+ 
+  const PopupViewHandler = () => {
+    if (proposal_vote_definition) {
+      proposal_vote_definition.style.display = "block";
+    }
+  };
+  const PopupCloseHandler = () => {
+    if (proposal_vote_definition) {
+      proposal_vote_definition.style.display = "none";
+    }
+  };
+
+  
 
   return (
     <>
@@ -122,6 +139,14 @@ const Votes = () => {
                   </div>
                 </div>
                 <div className="col-md-3">
+                  <a
+                    href="https://illinois.qualtrics.com/jfe/form/SV_aY8DrECtjmVpdga"
+                    target="_blank"
+                  >
+                    <button className="take_survey_btn">
+                      <BsChatDots /> Take Survey
+                    </button>
+                  </a>
                   <div className="proposal_info_container">
                     <h6>
                       {" "}
@@ -132,8 +157,8 @@ const Votes = () => {
                       <small>
                         Voting System{" "}
                         <span>
-                          {currentUser?.user.data.votingDesignId === 1 ||
-                          currentUser?.user.data.votingDesignId === 2
+                          {currentUser?.user?.data?.votingDesignId === 1 ||
+                          currentUser?.user?.data?.votingDesignId === 2
                             ? "Quadratic"
                             : "Weighted"}{" "}
                           <BsQuestionCircle />
@@ -142,9 +167,9 @@ const Votes = () => {
                       <small>
                         Start Date
                         <span>
-                          {currentUser?.user.data.createdAt
+                          {currentUser?.user?.data?.createdAt
                             ? new Date(
-                                currentUser.user.data.createdAt
+                                currentUser?.user?.data?.createdAt
                               ).toLocaleString()
                             : ""}
                         </span>
@@ -152,10 +177,10 @@ const Votes = () => {
                       <small>
                         End Date{" "}
                         <span>
-                          {currentUser?.user.data.createdAt
+                          {currentUser?.user?.data?.createdAt
                             ? new Date(
                                 new Date(
-                                  currentUser?.user.data.createdAt
+                                  currentUser?.user?.data?.createdAt
                                 ).getTime() +
                                   7 * 24 * 60 * 60 * 1000
                               ).toLocaleString()
@@ -168,12 +193,13 @@ const Votes = () => {
                     <h6>Your Voting Power</h6>
                     <small>
                       Available Power{" "}
-                      <span>{currentUser?.user.data.tokens}</span>
+                      <span>{currentUser?.user?.data?.tokens}</span>
                     </small>
                   </div>
-                  <button>
+                  <button onClick={PopupViewHandler}>
                     <GiVote /> What is "Proposal" and "Vote"?
                   </button>
+
                   <Link to={"/discuss-with-others"}>
                     <button>
                       <BsFillPeopleFill /> Discuss With Others
@@ -182,8 +208,8 @@ const Votes = () => {
                 </div>
 
                 <div className="vote_cast_container_section">
-                  {currentUser?.user.data.votingDesignId === 1 ||
-                  currentUser?.user.data.votingDesignId === 2 ? (
+                  {currentUser?.user?.data?.votingDesignId === 1 ||
+                  currentUser?.user?.data?.votingDesignId === 2 ? (
                     <QuadraticVoteCast />
                   ) : (
                     <VoteCast />
@@ -213,6 +239,30 @@ const Votes = () => {
         )}
       </div>
       <Toaster position="top-center" reverseOrder={false} />
+      <div className="proposal_vote_definition">
+        <small>
+          <b>Proposal:</b> A proposal in this context refers to a formal
+          suggestion or plan put forward to be considered by AI companies in
+          improving AI Models in future development. In our case, the AI model
+          is related to the Multi-modal LLM Model in video analysis
+          <br />
+          <br />
+          <b>Vote:</b> Voting in this scenario refers to the process by which
+          users like you express their preferences or approval regarding the
+          proposed improvements to the multi-modal LLM model. Through voting,
+          your preference will be recorded and will be used to make decision on
+          future development by AI companies.
+        </small>
+        <br />
+        <br />
+        <button
+          className="proposal_vote_definition_popup_close_btn"
+          onClick={PopupCloseHandler}
+        >
+          close
+        </button>
+      </div>
+      
     </>
   );
 };

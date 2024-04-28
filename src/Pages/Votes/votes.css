@@ -69,3 +69,49 @@
   margin-top: 15px;
   font-size: 14px;
 }
+
+.take_survey_btn{
+  background-color: #2859e0 !important;
+  color: #fff;
+  border-radius: 7px;
+  margin-top: 0px !important;
+  margin-bottom: 20px;
+}
+
+.proposal_vote_definition{
+  top: 0;
+  width: 600px;
+  position: absolute;
+  background-color: #fff;
+  border: 2px solid #758ed4;
+  border-radius: 10px;
+  margin-top: 35vh;
+  margin-left: 32%;
+  padding: 20px 30px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  display: none;
+}
+ .take_survey_popup{
+  top: 0;
+  width: 600px;
+  position: absolute;
+  background-color: #fff;
+  border: 2px solid #758ed4;
+  border-radius: 10px;
+  margin-top: 37vh;
+  margin-left: 30%;
+  padding: 50px 30px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  display: none;
+  text-align: center;
+}
+.take_survey_popup h5{
+  line-height: 35px;
+}
+
+.proposal_vote_definition_popup_close_btn{
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  padding: 10px 20px;
+  background: none;
+}

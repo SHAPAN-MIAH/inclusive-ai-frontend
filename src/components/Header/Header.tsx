@@ -39,7 +39,7 @@ const Header = () => {
         <Dropdown>
           <Dropdown.Toggle variant="" id="dropdown-basic">
             <span>
-              {currentUser?.user.data.email.toString().substring(0, 10)}...
+              {currentUser?.user?.data?.email.toString().substring(0, 10)}...
             </span>
           </Dropdown.Toggle>
 

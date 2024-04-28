@@ -1,10 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./introVideo.css";
 import { useRef, useState } from "react";
 import introVideo from "../../assets/videos/Inclusive AI — Intro (1).mp4";
 import toast, { Toaster } from "react-hot-toast";
+import { baseUrl } from "../../assets/BaseUrl";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
+interface IStateData {
+  user_cloud_id: {
+    cloud_research_id: string | any;
+  };
+}
 const IntroVideo = () => {
+  const currentUser: any = useSelector(
+    (state: RootState) => state?.userData?.currentUser
+  );
+  const token: any = currentUser?.token;
+
   const videoRef = useRef(null);
   const [isEnded, setIsEnded] = useState(false);
   const handleEnded = () => {
@@ -15,14 +29,55 @@ const IntroVideo = () => {
     toast.error("Please see the intro video first then press continue.");
   };
 
+  const [state, setState] = useState<IStateData>({
+    user_cloud_id: {
+      cloud_research_id: "",
+    },
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setState({
+      user_cloud_id: {
+        ...state.user_cloud_id,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  const navigate = useNavigate();
+
+  const CloudResearchIdSubmit = (
+    event: React.FormEvent<HTMLFormElement>
+  ): void => {
+    event.preventDefault();
+
+    try {
+      axios
+        .post(
+          `${baseUrl}/user/set-user-cloud-research-id`,
+          state.user_cloud_id,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
+        .then((res) => {
+          if (res?.data?.success === true) {
+            navigate("/chat-with-ai");
+          }
+        });
+    } catch (error) {
+      console.log("error.message");
+    }
+  };
+
   return (
     <div className="intro_video_section_page">
-      <div className="intro_header">
+      {/* <div className="intro_header">
         <h4>Intro</h4>
-      </div>
+      </div> */}
       <div className="intro_video_content">
-        <h3>Watch the intro video</h3>
         <div>
+          <h3>Watch the intro video</h3>
           <video
             aria-label="Video"
             ref={videoRef}
@@ -39,15 +94,45 @@ const IntroVideo = () => {
             <source type="video/webm" src={introVideo} />
           </video>
         </div>
-        {isEnded ? (
-          <Link to={"/chat-with-ai"}>
-            <button className="continue_btn">Continue</button>
-          </Link>
-        ) : (
-          <button className="continue_btn" onClick={introVideoFirstRequire}>
-            Continue
-          </button>
-        )}
+        <div>
+          {isEnded ? (
+            <>
+              {currentUser?.user?.data?.cloud_research_id ? (
+                <Link to={"/chat-with-ai"}>
+                  <button className="continue_btn">Continue</button>
+                </Link>
+              ) : (
+                <form
+                  onSubmit={CloudResearchIdSubmit}
+                  className="d-flex justify-content-center mt-5"
+                >
+                  <div>
+                    <label htmlFor="">
+                      <h5>Provide your cloud research id</h5>
+                    </label>
+                    <input
+                      type="text"
+                      name="cloud_research_id"
+                      required
+                      placeholder="Enter your cloud research id"
+                      className="emailLoginInput cloud_research_id_Input"
+                      value={state?.user_cloud_id?.cloud_research_id}
+                      onChange={handleChange}
+                    />
+                    <br />
+                    <button className="continue_btn" type="submit">
+                      Continue
+                    </button>
+                  </div>
+                </form>
+              )}
+            </>
+          ) : (
+            <button className="continue_btn" onClick={introVideoFirstRequire}>
+              Continue
+            </button>
+          )}
+        </div>
       </div>
 
       <Toaster position="top-center" reverseOrder={false} />

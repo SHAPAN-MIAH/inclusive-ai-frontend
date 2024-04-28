@@ -115,9 +115,9 @@ const QuadraticVoteCast = () => {
     }
 
     const newQuantity = parseInt(event.target.value);
-    if(Number.isNaN(newQuantity)){
+    if (Number.isNaN(newQuantity)) {
       setVoteQuantityOne(0);
-      return
+      return;
     }
     if (
       !isNaN(newQuantity) &&
@@ -143,19 +143,19 @@ const QuadraticVoteCast = () => {
       return;
     }
     const newQuantity = parseInt(event.target.value);
-    if(Number.isNaN(newQuantity)){
-      setVoteQuantityTwo(0)
-      return
+    if (Number.isNaN(newQuantity)) {
+      setVoteQuantityTwo(0);
+      return;
     }
     if (
       !isNaN(newQuantity) &&
       newQuantity >= 0 &&
       newQuantity <= voteTokens &&
       voteTokens >=
-      Math.pow(voteQuantityOne, 2) +
-      Math.pow(newQuantity, 2) +
-      Math.pow(voteQuantityThree, 2) +
-      Math.pow(voteQuantityFour, 2)
+        Math.pow(voteQuantityOne, 2) +
+          Math.pow(newQuantity, 2) +
+          Math.pow(voteQuantityThree, 2) +
+          Math.pow(voteQuantityFour, 2)
     ) {
       setVoteQuantityTwo(newQuantity);
     }
@@ -171,19 +171,19 @@ const QuadraticVoteCast = () => {
       return;
     }
     const newQuantity = parseInt(event.target.value);
-    if(Number.isNaN(newQuantity)){
-      setVoteQuantityThree(0)
-      return
+    if (Number.isNaN(newQuantity)) {
+      setVoteQuantityThree(0);
+      return;
     }
     if (
       !isNaN(newQuantity) &&
       newQuantity >= 0 &&
       newQuantity <= voteTokens &&
       voteTokens >=
-      Math.pow(voteQuantityOne, 2) +
-      Math.pow(voteQuantityTwo, 2) +
-      Math.pow(newQuantity, 2) +
-      Math.pow(voteQuantityFour, 2)
+        Math.pow(voteQuantityOne, 2) +
+          Math.pow(voteQuantityTwo, 2) +
+          Math.pow(newQuantity, 2) +
+          Math.pow(voteQuantityFour, 2)
     ) {
       setVoteQuantityThree(newQuantity);
     }
@@ -199,25 +199,28 @@ const QuadraticVoteCast = () => {
       return;
     }
     const newQuantity = parseInt(event.target.value);
-    if(Number.isNaN(newQuantity)){
-      setVoteQuantityFour(0)
-      return
+    if (Number.isNaN(newQuantity)) {
+      setVoteQuantityFour(0);
+      return;
     }
     if (
       !isNaN(newQuantity) &&
       newQuantity >= 0 &&
       newQuantity <= voteTokens &&
       voteTokens >=
-      Math.pow(voteQuantityOne, 2) +
-      Math.pow(voteQuantityTwo, 2) +
-      Math.pow(voteQuantityThree, 2) +
-      Math.pow(newQuantity, 2)
+        Math.pow(voteQuantityOne, 2) +
+          Math.pow(voteQuantityTwo, 2) +
+          Math.pow(voteQuantityThree, 2) +
+          Math.pow(newQuantity, 2)
     ) {
       setVoteQuantityFour(newQuantity);
     }
   };
 
   const [successMessage, setSuccessMessage] = useState("");
+  const take_survey_popup: Element | null | any =
+    document.querySelector(".take_survey_popup");
+
   const VoteSubmit = () => {
     const hideBtn: Element | null | any =
       document.querySelector("#voteSubmitBtn");
@@ -268,6 +271,9 @@ const QuadraticVoteCast = () => {
             if (showBtn) {
               showBtn.style.display = "none";
             }
+            if (take_survey_popup) {
+              take_survey_popup.style.display = "block";
+            }
           });
       });
   };
@@ -290,12 +296,21 @@ const QuadraticVoteCast = () => {
     return boxes;
   };
 
+  const TakeSurveyPopupCloseHandler = () => {
+    if (take_survey_popup) {
+      take_survey_popup.style.display = "none";
+    }
+  };
+
   return (
     <>
       <div className="row">
         <div className="col-md-7">
           <div className="vote_cast_container">
-            <h6>Cast your votes! <b>You can vote one time</b>. And must use all votes.</h6>
+            <h6>
+              Cast your votes! <b>You can vote one time</b>. And must use all
+              votes.
+            </h6>
             <div className="vote_cast_content">
               <div className="vote_remaining">
                 <small>
@@ -371,8 +386,29 @@ const QuadraticVoteCast = () => {
           <div className="quadratic_vote_square_box_container">
             <div className="box-container">{renderBoxes()}</div>
           </div>
-         
         </div>
+      </div>
+
+      <div className="take_survey_popup">
+        <h5>
+          You successfully completed first part of the study,
+          <br />
+          now Join the survey and complete it.
+        </h5>
+
+        <br />
+        <br />
+        <a
+          href="https://illinois.qualtrics.com/jfe/form/SV_aY8DrECtjmVpdga"
+          target="_blank"
+        >
+          <button
+            className="proposal_vote_definition_popup_close_btn take_survey_btn"
+            onClick={TakeSurveyPopupCloseHandler}
+          >
+            Take survey
+          </button>
+        </a>
       </div>
     </>
   );
