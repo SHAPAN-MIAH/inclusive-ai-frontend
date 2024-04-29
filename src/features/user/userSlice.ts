@@ -10,6 +10,7 @@ interface User {
       tokens: number;
       originalTokensAssigned: number;
       votingDesignId: number;
+      cloud_research_id: number | string | any;
       createdAt: string | Date
     };
   };

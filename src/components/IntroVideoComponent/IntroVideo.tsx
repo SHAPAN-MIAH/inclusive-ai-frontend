@@ -1,16 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./introVideo.css";
 import { useRef, useState } from "react";
-import introVideo from "../../assets/videos/Inclusive AI — Intro (1).mp4";
+import introVideo from "../../assets/videos/video-instruction.mp4";
 import toast, { Toaster } from "react-hot-toast";
 import { baseUrl } from "../../assets/BaseUrl";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { AppDispatch, RootState } from "../../store";
+import { setCurrentUser } from "../../features/user/userSlice";
+import { useDispatch } from "react-redux";
 
 interface IStateData {
   user_cloud_id: {
-    cloud_research_id: string | any;
+    cloud_research_id: string | number | any;
   };
 }
 const IntroVideo = () => {
@@ -18,7 +20,7 @@ const IntroVideo = () => {
     (state: RootState) => state?.userData?.currentUser
   );
   const token: any = currentUser?.token;
-
+  const dispatch: AppDispatch = useDispatch();
   const videoRef = useRef(null);
   const [isEnded, setIsEnded] = useState(false);
   const handleEnded = () => {
@@ -61,9 +63,21 @@ const IntroVideo = () => {
           }
         )
         .then((res) => {
-          if (res?.data?.success === true) {
-            navigate("/chat-with-ai");
-          }
+          axios.get(baseUrl + `/user/user-details`,  {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then(response => {
+             dispatch(setCurrentUser({
+              user: response?.data, token
+             }));
+
+             if (response?.data?.success === true) {
+              navigate("/chat-with-ai");
+            }
+          })
+
+
+          
         });
     } catch (error) {
       console.log("error.message");
