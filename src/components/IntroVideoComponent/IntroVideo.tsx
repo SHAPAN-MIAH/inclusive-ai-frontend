@@ -63,18 +63,20 @@ const IntroVideo = () => {
           }
         )
         .then((res) => {
-          axios.get(baseUrl + `/user/user-details`,  {
-            headers: { Authorization: `Bearer ${token}` },
-          })
-          .then(response => {
-             dispatch(setCurrentUser({
-              user: response?.data, token
-             }));
-
-             if (response?.data?.success === true) {
-              navigate("/chat-with-ai");
-            }
-          })
+          if(res){
+            axios.get(baseUrl + `/user/user-details`,  {
+              headers: { Authorization: `Bearer ${token}` },
+            })
+            .then(response => {
+               dispatch(setCurrentUser({
+                user: response?.data, token
+               }));
+  
+               if (response?.data?.success === true) {
+                navigate("/chat-with-ai");
+              }
+            })
+          }
 
 
           
