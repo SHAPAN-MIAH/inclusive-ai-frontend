@@ -24,9 +24,9 @@ const Header = () => {
   return (
     <div className="header_section">
       <div className="header_container">
-        <h1>Inclusive Ai</h1>
+        <h1>Inclusive AI</h1>
         {location.pathname == "/chat-with-ai" ? (
-          <p>Chat with Ai</p>
+          <p>Chat with AI</p>
         ) : location.pathname == "/discuss-with-others" ? (
           <p>Discuss With Others</p>
         ) : location.pathname == "/votes" ? (
