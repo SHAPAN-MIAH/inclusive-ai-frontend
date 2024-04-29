@@ -28,10 +28,15 @@
 .videoAnalysisMaybeBtn {
   border: 1px solid gainsboro;
   border-radius: 5px;
-  background-color: transparent;
+  background-color: rgb(16, 120, 211);
+  color: #fff;
   padding: 7px 10px;
   font-size: 13px;
   margin-left: 10px;
+}
+.videoAnalysisContinueBtn:hover{
+  background-color: rgb(18, 89, 151);
+  color: rgb(255, 255, 255);
 }
 .videoAnalysisYesBtn {
   background-color: green;

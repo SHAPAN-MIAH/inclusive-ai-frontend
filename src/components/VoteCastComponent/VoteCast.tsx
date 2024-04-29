@@ -340,10 +340,18 @@ const VoteCast = () => {
         </div>
       </div>
       <div className="take_survey_popup">
-        <p>
+      <div className="d-flex justify-content-end mb-5">
+        <span
+            className="closeTakeSurvey"
+            onClick={TakeSurveyPopupCloseHandler}
+          >
+            X
+          </span>
+        </div>
+        <h5>
           You successfully completed first part of the study, now Join the
           survey and complete it.
-        </p>
+        </h5>
 
         <br />
         <br />

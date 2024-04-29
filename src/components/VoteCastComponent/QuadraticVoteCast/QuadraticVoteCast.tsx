@@ -390,6 +390,14 @@ const QuadraticVoteCast = () => {
       </div>
 
       <div className="take_survey_popup">
+        <div className="d-flex justify-content-end mb-5">
+        <span
+            className="closeTakeSurvey"
+            onClick={TakeSurveyPopupCloseHandler}
+          >
+            X
+          </span>
+        </div>
         <h5>
           You successfully completed first part of the study,
           <br />

@@ -63,13 +63,15 @@ const Votes = () => {
                   In this proposal, there are four potential solutions (options)
                   presented.
                   <br />
+
+                 
                   <span>
                     {currentUser?.user?.data?.originalTokensAssigned == 100
-                      ? "You have 100 votes to allocate among those choices."
+                      ? "You have 100 votes to allocate among that choice. You have the same voting power as all the members voting for this proposal."
                       : currentUser?.user?.data?.originalTokensAssigned == 25
-                      ? "You have 25 votes to allocate among those choice."
+                      ? "You have 25 votes to allocate among those choices. You are one of the 80% of the members in this group who have less voting power than the remaining 20% of the members in this group."
                       : currentUser?.user?.data?.originalTokensAssigned == 400
-                      ? "You have 400 votes to allocate among those choice/ You are one of the 20% of the members in this group that have more voting power than the remaining 80% of the members in this group."
+                      ? "You have 400 votes to allocate among those choices. You are one of the 20% of the members in this group who have more voting power than the remaining 80% of the members in this group."
                       : ""}
                   </span>
                 </small>

@@ -330,24 +330,24 @@ const ChatWithAi = () => {
                             Did you find useful?
                           </span>
 
-                          <button
+                          {chatWithAiAnalysisDone == "true" ? "" : <button
                             className="videoAnalysisYesBtn"
                             onClick={() => videoAnalysisYesNoMaybeHandler(1)}
                           >
                             Yes
-                          </button>
-                          <button
+                          </button>}
+                          {chatWithAiAnalysisDone == "true" ? "" : <button
                             className="videoAnalysisNoBtn"
                             onClick={() => videoAnalysisYesNoMaybeHandler(2)}
                           >
                             No
-                          </button>
-                          <button
+                          </button>}
+                          {chatWithAiAnalysisDone == "true" ? "" : <button
                             className="videoAnalysisMaybeBtn"
                             onClick={() => videoAnalysisYesNoMaybeHandler(3)}
                           >
                             Maybe
-                          </button>
+                          </button>}
                         </div>
                       )}
                     </>

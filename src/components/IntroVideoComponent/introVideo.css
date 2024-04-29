@@ -22,12 +22,12 @@
   margin-top: 20px;
   border: 1px solid gainsboro;
   border-radius: 5px;
-  background-color: aliceblue;
-  color: gray;
+  background-color: rgb(16, 120, 211);
+  color: rgb(255, 255, 255);
   
 }
 .continue_btn:hover{
-  background-color: rgb(16, 120, 211);
+  background-color: rgb(18, 89, 151);
   color: rgb(255, 255, 255);
   
 }
