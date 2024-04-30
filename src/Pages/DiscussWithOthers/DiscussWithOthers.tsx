@@ -119,7 +119,9 @@ const DiscussWithOthers = () => {
 
     socket.on("discuss-message", (message: any) => {
       setMessages((prevMessages) => [...prevMessages, message.data]);
-      setInput("");
+      if (AuthEmail == message.data.senderEmail) {
+        setInput("");
+      }
     });
 
     socket.on("discuss-message-error", (message: any) => {
@@ -242,7 +244,7 @@ const DiscussWithOthers = () => {
                         }
                         key={i}
                       >
-                        {message?.senderEmail ? (
+                        {message?.senderEmail == message?.senderEmail ? (
                           <>
                             <p
                               className={

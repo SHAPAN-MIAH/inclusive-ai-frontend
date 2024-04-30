@@ -277,7 +277,7 @@ const ChatWithAi = () => {
                         style={{
                           borderRadius: "5px",
                           width: "auto",
-                          height: "400px",
+                          height: "340px",
                           boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
                           marginLeft: "10px",
                           marginBottom: "10px",

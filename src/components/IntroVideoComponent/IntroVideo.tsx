@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./introVideo.css";
 import { useRef, useState } from "react";
-import introVideo from "../../assets/videos/video-instruction.mp4";
+import introVideo from "../../assets/videos/intro-video.mp4";
 import toast, { Toaster } from "react-hot-toast";
 import { baseUrl } from "../../assets/BaseUrl";
 import axios from "axios";
@@ -102,7 +102,7 @@ const IntroVideo = () => {
             style={{
               borderRadius: "5px",
               width: "auto",
-              height: "500px",
+              height: "460px",
               boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
               marginLeft: "40px",
             }}

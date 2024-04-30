@@ -42,7 +42,7 @@ const VoteIntroVideoPage = ({ setVoteContinueBtnEnable }: any) => {
                 style={{
                   borderRadius: "5px",
                   width: "auto",
-                  height: "500px",
+                  height: "460px",
                   boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
                   marginLeft: "40px",
                 }}
@@ -61,7 +61,7 @@ const VoteIntroVideoPage = ({ setVoteContinueBtnEnable }: any) => {
                 style={{
                   borderRadius: "5px",
                   width: "auto",
-                  height: "500px",
+                  height: "460px",
                   boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
                   marginLeft: "40px",
                 }}

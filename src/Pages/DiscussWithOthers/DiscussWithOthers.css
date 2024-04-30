@@ -163,14 +163,14 @@
   margin-right: 10px;
 }
 .messageR {
-  background-color: #10439F;
+  background-color: #E1ACAC;
   width: fit-content;
   border-radius: 10px;
   padding: 10px 20px;
   margin-right: 10px;
 }
 .messageS {
-  background-color: #874CCC;
+  background-color: #F4EAE0;
   width: fit-content;
   border-radius: 10px;
   padding: 10px 20px;
@@ -428,7 +428,7 @@
   height: 35px;
   border-radius: 10px;
   border: 2px solid gainsboro;
-  background-color: #10439F;
+  background-color: #E1ACAC;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -439,7 +439,7 @@
   height: 35px;
   border-radius: 10px;
   border: 2px solid gainsboro;
-  background-color: #874CCC;
+  background-color: #F4EAE0;
   display: flex;
   justify-content: center;
   align-items: center;
