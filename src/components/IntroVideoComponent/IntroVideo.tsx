@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./introVideo.css";
 import { useRef, useState } from "react";
-import introVideo from "../../assets/videos/intro-video.mp4";
+import introVideo from "../../assets/videos/intro-video-update.mp4";
 import toast, { Toaster } from "react-hot-toast";
 import { baseUrl } from "../../assets/BaseUrl";
 import axios from "axios";
