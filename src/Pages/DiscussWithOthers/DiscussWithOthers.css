@@ -42,51 +42,483 @@
   justify-content: end;
   text-align: justify;
 }
-.discuss_chat2 {
-  padding: 5px 20px;
-  margin: 5px 0px;
-  font-size: 15px;
-  display: flex;
-  align-items: flex-start;
-  text-align: justify;
-}
-.discuss_chat1 p {
-  background-color: aliceblue;
-  width: fit-content;
-  border-radius: 10px;
-  padding: 10px 20px;
-  margin-right: 10px;
-}
-.discuss_chat2 p {
-  background-color: rgb(244, 244, 244);
-  width: fit-content;
-  border-radius: 10px;
-  padding: 10px 20px;
-  margin-right: 10px;
 
+.messageA {
+  background-color: aqua;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
 }
+.messageB {
+  background-color: aquamarine;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageC {
+  background-color: #BA704F;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageD {
+  background-color: #FAF2D3;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageE {
+  background-color: #7C93C3;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageF {
+  background-color: #B1C381;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageG {
+  background-color: #B4D4FF;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageH {
+  background-color: #86B6F6;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageI {
+  background-color: #D20062;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageJ {
+  background-color: #E5DDC5;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageK {
+  background-color: #BED7DC;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageL {
+  background-color: #B3C8CF;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageM {
+  background-color: #5BBCFF;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageN {
+  background-color: #C5FF95;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageO {
+  background-color: #DD5746;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageP {
+  background-color: #FFC470;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageQ {
+  background-color: #8B322C;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageR {
+  background-color: #10439F;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageS {
+  background-color: #874CCC;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageT {
+  background-color: #948979;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageU {
+  background-color: #3C5B6F;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageV {
+  background-color: #FFB1B1;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageW {
+  background-color: #FFCBCB;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageX {
+  background-color: #FFEAE3;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageY {
+  background-color: #DBDFEA;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.messageZ {
+  background-color: #00215E;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+
 
 .discuss_chat1 img{
   width: 30px;
   margin-left: 20px;
   border-radius: 100px;
 }
-.discuss_chat2 img {
-  width: 30px;
-  margin-right: 20px;
-  border-radius: 100px;
-}
 
 
 
-.profile-image {
+
+.profile-imageA {
   width: 35px;
   height: 35px;
   border-radius: 10px;
   border: 2px solid gainsboro;
+  background-color: aqua;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 15px;
-  /* margin-left: 20px; */
+}
+.profile-imageB {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageC {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #BA704F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageD {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #FAF2D3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageE {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #7C93C3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageF {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #B1C381;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageG {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #B4D4FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageH {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #86B6F6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageI {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #D20062;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageJ {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #E5DDC5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageK {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #BED7DC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageL {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #B3C8CF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageM {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #5BBCFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageN {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #C5FF95;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageO {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #DD5746;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageP {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #FFC470;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageQ {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #8B322C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageR {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #10439F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageS {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #874CCC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageT {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #948979;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageU {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #3C5B6F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageV {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #FFB1B1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageW {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #FFCBCB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageX {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #FFEAE3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageY {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #DBDFEA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.profile-imageZ {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+  background-color: #00215E;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
 }

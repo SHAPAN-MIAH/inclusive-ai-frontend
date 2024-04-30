@@ -139,14 +139,14 @@ const ChatWithAi = () => {
   );
 
   useEffect(() => {
-    if(token){
+    if (token) {
       axios
-      .get(baseUrl + `/chat-with-ai/previous-all-responses`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        setMessages([...messages, ...res.data.data]);
-      });
+        .get(baseUrl + `/chat-with-ai/previous-all-responses`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => {
+          setMessages([...messages, ...res.data.data]);
+        });
     }
   }, [token]);
 
@@ -206,16 +206,40 @@ const ChatWithAi = () => {
                       <MdOutlineKeyboardDoubleArrowLeft />
                     </span>
                   </div>
-                  <p>
-                    You are participating in a research study. We aim to build a
-                    tool that enables users to contribute input for shaping
-                    future AI rules. Please converse with ChatGPT in the middle
-                    panel and ask any questions you have about this AI topic,
-                    share any preference and expectations that you have.
-                    <br /> <br /> Once you finish your conversation with ChatGPT
-                    on this topic, please click the button on the left panel to
-                    fill out a survey. Thank you.{" "}
-                  </p>
+                  <div>
+                    <p>
+                    a. You are participating in a research study. We aim to
+                    build a tool that enables users to contribute input for
+                    shaping future AI rules. Please converse with ChatGPT in the
+                    right panel and ask any questions you have about this AI
+                    topic, and share any preferences and expectations with the
+                    AI interviewer. More specifically you will chat about a
+                    topic related to video analysis done by ChatGPT. Here's what
+                    you need to do:-
+                    </p>
+                    <ul>
+                      <li>i. Watch the video.</li>
+                      <li>ii. Click on 'analyze the video.'</li>
+                      <li>iii. Read the analysis by ChatGPT.</li>
+                      <li>iv. Chat with ChatGPT to share your feedback and suggestions for improvement.</li>
+                    </ul>
+                 
+                    <p>b. Once you finish your conversation with ChatGPT on this
+                    topic:-</p>
+                    <ul>
+                      <li>
+                        i. Click on the “Discuss with Others” tab to discuss
+                        with other users what they think about this same topic.
+                        Try to engage in the discussion as much as you can.
+                      </li>
+                      <li>
+                        ii. Then, you will click on the “Vote” tab to share your
+                        preference through voting. More information is available
+                        on that page.
+                      </li>
+                    </ul>
+                    Thank you.
+                  </div>
 
                   <div className="chat_with_ai_section_sideArticle_btn_container">
                     <Link to={"/discuss-with-others"}>
@@ -253,7 +277,7 @@ const ChatWithAi = () => {
                         style={{
                           borderRadius: "5px",
                           width: "auto",
-                          height: "200px",
+                          height: "400px",
                           boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
                           marginLeft: "10px",
                           marginBottom: "10px",
@@ -270,7 +294,10 @@ const ChatWithAi = () => {
                           Analyze the video
                         </button>
                       ) : (
-                        <button className="videoAnalysisContinueBtn" onClick={introVideoFirstRequire}>
+                        <button
+                          className="videoAnalysisContinueBtn"
+                          onClick={introVideoFirstRequire}
+                        >
                           Analyze the video
                         </button>
                       )}
@@ -330,24 +357,36 @@ const ChatWithAi = () => {
                             Did you find useful?
                           </span>
 
-                          {chatWithAiAnalysisDone == "true" ? "" : <button
-                            className="videoAnalysisYesBtn"
-                            onClick={() => videoAnalysisYesNoMaybeHandler(1)}
-                          >
-                            Yes
-                          </button>}
-                          {chatWithAiAnalysisDone == "true" ? "" : <button
-                            className="videoAnalysisNoBtn"
-                            onClick={() => videoAnalysisYesNoMaybeHandler(2)}
-                          >
-                            No
-                          </button>}
-                          {chatWithAiAnalysisDone == "true" ? "" : <button
-                            className="videoAnalysisMaybeBtn"
-                            onClick={() => videoAnalysisYesNoMaybeHandler(3)}
-                          >
-                            Maybe
-                          </button>}
+                          {chatWithAiAnalysisDone == "true" ? (
+                            ""
+                          ) : (
+                            <button
+                              className="videoAnalysisYesBtn"
+                              onClick={() => videoAnalysisYesNoMaybeHandler(1)}
+                            >
+                              Yes
+                            </button>
+                          )}
+                          {chatWithAiAnalysisDone == "true" ? (
+                            ""
+                          ) : (
+                            <button
+                              className="videoAnalysisNoBtn"
+                              onClick={() => videoAnalysisYesNoMaybeHandler(2)}
+                            >
+                              No
+                            </button>
+                          )}
+                          {chatWithAiAnalysisDone == "true" ? (
+                            ""
+                          ) : (
+                            <button
+                              className="videoAnalysisMaybeBtn"
+                              onClick={() => videoAnalysisYesNoMaybeHandler(3)}
+                            >
+                              Maybe
+                            </button>
+                          )}
                         </div>
                       )}
                     </>

@@ -79,8 +79,7 @@ const DiscussWithOthers = () => {
         chatInput.focus();
         // const clipboardText = await navigator.clipboard.readText();
         // chatInput.value = clipboardText;
-        setInput(text)
-
+        setInput(text);
       }
     }
   };
@@ -92,7 +91,6 @@ const DiscussWithOthers = () => {
   const token = currentUser?.token;
   const AuthEmail = currentUser?.user?.data?.email;
 
-  
   const [messages, setMessages] = useState<any[]>([]);
   const msgEnd = useRef<HTMLDivElement>(null);
 
@@ -138,7 +136,6 @@ const DiscussWithOthers = () => {
     });
   };
 
-  
   return (
     <>
       <div className="discuss_with_others_section">
@@ -165,7 +162,9 @@ const DiscussWithOthers = () => {
 
                       <div className="d-flex">
                         <button onClick={() => askTopicHandler(1)}>ASK</button>
-                        <button onClick={topicOneNextHandler}>NEXT TOPIC</button>
+                        <button onClick={topicOneNextHandler}>
+                          NEXT TOPIC
+                        </button>
                       </div>
                     </div>
                   )}
@@ -181,7 +180,9 @@ const DiscussWithOthers = () => {
 
                       <div className="d-flex">
                         <button onClick={() => askTopicHandler(2)}>ASK</button>
-                        <button onClick={topicTwoNextHandler}>NEXT TOPIC</button>
+                        <button onClick={topicTwoNextHandler}>
+                          NEXT TOPIC
+                        </button>
                       </div>
                     </div>
                   )}
@@ -196,7 +197,9 @@ const DiscussWithOthers = () => {
 
                       <div className="d-flex">
                         <button onClick={() => askTopicHandler(3)}>ASK</button>
-                        <button onClick={topicThreeNextHandler}>NEXT TOPIC</button>
+                        <button onClick={topicThreeNextHandler}>
+                          NEXT TOPIC
+                        </button>
                       </div>
                     </div>
                   )}
@@ -211,17 +214,19 @@ const DiscussWithOthers = () => {
 
                       <div className="d-flex">
                         <button onClick={() => askTopicHandler(4)}>ASK</button>
-                        <button onClick={topicFourNextHandler}>NEXT TOPIC</button>
+                        <button onClick={topicFourNextHandler}>
+                          NEXT TOPIC
+                        </button>
                       </div>
                     </div>
                   )}
 
                   <div className="discuss_with_others_section_sideArticle_btn_container mb-3">
-                   <Link to={'/votes'}>
-                   <button>
+                    <Link to={"/votes"}>
+                      <button>
                         <MdOutlineHowToVote /> Vote on topic
-                    </button>
-                   </Link>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -237,10 +242,124 @@ const DiscussWithOthers = () => {
                         }
                         key={i}
                       >
-                        {message?.senderEmail == message?.senderEmail ? (
+                        {message?.senderEmail ? (
                           <>
-                            <p>{message?.message}</p>
-                            <ProfileImage email={message?.senderEmail && message?.senderEmail} />
+                            <p
+                              className={
+                                message?.senderEmail
+                                  .substring(0, 1)
+                                  .toUpperCase() == "A"
+                                  ? "messageA"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "B"
+                                  ? "messageB"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "C"
+                                  ? "messageC"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "D"
+                                  ? "messageD"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "E"
+                                  ? "messageE"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "F"
+                                  ? "messageF"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "G"
+                                  ? "messageG"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "H"
+                                  ? "messageH"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "I"
+                                  ? "messageI"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "J"
+                                  ? "messageJ"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "K"
+                                  ? "messageK"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "L"
+                                  ? "messageL"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "M"
+                                  ? "messageM"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "N"
+                                  ? "messageN"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "O"
+                                  ? "messageO"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "P"
+                                  ? "messageP"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "Q"
+                                  ? "messageQ"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "R"
+                                  ? "messageR"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "S"
+                                  ? "messageS"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "T"
+                                  ? "messageT"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "U"
+                                  ? "messageU"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "V"
+                                  ? "messageV"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "W"
+                                  ? "messageW"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "X"
+                                  ? "messageX"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "Y"
+                                  ? "messageY"
+                                  : message?.senderEmail
+                                      .substring(0, 1)
+                                      .toUpperCase() == "Z"
+                                  ? "messageZ"
+                                  : ""
+                              }
+                            >
+                              {message?.message}
+                            </p>
+                            <ProfileImage
+                              email={
+                                message?.senderEmail && message?.senderEmail
+                              }
+                            />
                           </>
                         ) : (
                           <>
