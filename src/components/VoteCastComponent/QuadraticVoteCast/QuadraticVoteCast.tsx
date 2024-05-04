@@ -336,7 +336,7 @@ const QuadraticVoteCast = () => {
                   </div>
                 </div>
                 <div className=" vote_input_content">
-                  <span>Context-Aware Adaptation</span>{" "}
+                  <span>Provide more specific Facts</span>{" "}
                   <div className="vote_input">
                     <span onClick={handleDecreaseTwo}>-</span>
                     <input
@@ -348,7 +348,7 @@ const QuadraticVoteCast = () => {
                   </div>
                 </div>
                 <div className=" vote_input_content">
-                  <span>User Feedback Loop Integration</span>{" "}
+                  <span>Integrate user feedback loop</span>{" "}
                   <div className="vote_input">
                     <span onClick={handleDecreaseThree}>-</span>
                     <input
@@ -360,7 +360,7 @@ const QuadraticVoteCast = () => {
                   </div>
                 </div>
                 <div className=" vote_input_content">
-                  <span>Advanced Modality Integration Techniques</span>{" "}
+                  <span>Provide analysis of Speakers emotion and sentiment</span>{" "}
                   <div className="vote_input">
                     <span onClick={handleDecreaseFour}>-</span>
                     <input

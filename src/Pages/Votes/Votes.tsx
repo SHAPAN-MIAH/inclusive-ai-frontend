@@ -31,7 +31,7 @@ const Votes = () => {
   const proposal_vote_definition: Element | null | any = document.querySelector(
     ".proposal_vote_definition"
   );
- 
+
   const PopupViewHandler = () => {
     if (proposal_vote_definition) {
       proposal_vote_definition.style.display = "block";
@@ -42,8 +42,6 @@ const Votes = () => {
       proposal_vote_definition.style.display = "none";
     }
   };
-
-  
 
   return (
     <>
@@ -63,8 +61,6 @@ const Votes = () => {
                   In this proposal, there are four potential solutions (options)
                   presented.
                   <br />
-
-                 
                   <span>
                     {currentUser?.user?.data?.originalTokensAssigned == 100
                       ? "You have 100 votes to allocate among that choice. You have the same voting power as all the members voting for this proposal."
@@ -114,27 +110,19 @@ const Votes = () => {
                           summarization the way it does now.
                         </li>
                         <li>
-                          <b>Context-Aware Adaptation: </b> This means that
-                          model needs improvement in personalizing the summaries
-                          that adapt to the specific needs or interests of
-                          different users, enhancing relevance and usability,
-                          and improving comprehension of context-specific
-                          nuances in video and audio content.
+                          <b>Provide more specific facts:</b> This means that
+                          the AI will focus on more specific factual content and
+                          allow users to form their own opinions.
                         </li>
                         <li>
-                          <b> User Feedback Loop Integration:</b> A feedback
-                          mechanism where user interactions (e.g., preferences,
-                          corrections, and ratings) directly influence the video
-                          summaries overtime.
+                          <b>Integrate user feedback loop:</b> This means that
+                          the AI will integrate a user feedback loop that allows
+                          the AI to utilize user preferences, expectations and
+                          ratings to directly improve its responses over time.
                         </li>
                         <li>
-                          <b>Advanced Modality Integration Techniques:</b> More
-                          coherent and comprehensive summaries that integrate
-                          cues from visual elements, spoken words, and text
-                          effectively. Better synchronization between video
-                          scenes and their corresponding parts in closed
-                          captions, leading to more accurate and timely
-                          summaries.
+                        <b>Provide analysis of Speakers emotion and sentiment: </b> This means that the AI will analyze speakers' emotions and sentiments (e.g., anger or excitement) in the video and provide responses that reflect the attitudes and feelings in the video.
+
                         </li>
                       </ol>
                     </div>
@@ -264,7 +252,6 @@ const Votes = () => {
           close
         </button>
       </div>
-      
     </>
   );
 };
