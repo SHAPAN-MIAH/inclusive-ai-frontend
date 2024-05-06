@@ -7,6 +7,10 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 import { setCurrentUser } from "../../features/user/userSlice";
+import eyeIcon from "../../assets/icons/cropped_image (2).png";
+import cameraIcon from "../../assets/icons/worldIdCam.png";
+import faceImg from "../../assets/icons/AdobeStock_340222197_cropped3.jpeg";
+import { FaCheckCircle } from "react-icons/fa";
 
 interface IState {
   user: {
@@ -43,7 +47,6 @@ const Login = () => {
 
     try {
       axios.post(`${baseUrl}/auth/request-otp`, state.user).then((res) => {
-        
         if (res?.data?.success === true) {
           setOtpSuccessStatus(true);
         }
@@ -109,6 +112,42 @@ const Login = () => {
       console.log("error.message");
     }
   };
+
+  const [authenticateStart, setAuthenticateStart] = useState(false);
+  const [provePersonhood, setProvePersonhood] = useState(false);
+  const [authenticateVerified, setAuthenticateVerified] = useState(false);
+
+  const authenticateStartHandler = () => {
+    setAuthenticateStart(true);
+    const login_card: Element | null | any  = document.querySelector(".login_card");
+
+    if( login_card) {
+      login_card.style.display = "none"
+    }
+  };
+
+
+  const provePersonhoodHandler = () => {
+    setProvePersonhood(true);
+    const prove_personHood_container: Element | null | any  = document.querySelector(".prove_personHood_container");
+
+    if( prove_personHood_container) {
+      prove_personHood_container.style.display = "none"
+    }
+
+  };
+  const authenticateVerifiedHandler = () => {
+    setAuthenticateVerified(true)
+    localStorage.setItem("authenticateVerified", "true")
+
+    
+  };
+  if(authenticateVerified){
+    
+    navigate("/intro")
+  }
+
+
 
   return (
     <div className="login_page_section">
@@ -190,7 +229,60 @@ const Login = () => {
               </form>
             )}
           </div>
+          <br />
+          <p>Or</p>
+          <div className="world_id_container">
+            <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-between align-items-center">
+                <img width={40} src={eyeIcon} alt="" />
+                <span>World Id</span>
+              </div>
+              <button className="activeBtn">Active</button>
+            </div>
+            <div className="d-flex justify-content-between">
+              <button
+                onClick={authenticateStartHandler}
+                className="authenticBtn"
+              >
+                Authenticate
+              </button>
+              <button className="recoverBtn">Recover</button>
+            </div>
+          </div>
         </div>
+        {authenticateStart && (
+          <div className="prove_personHood_container">
+            <div className="prove_personHood_cam_content">
+              <p>
+                Verify that you are human and <br /> login to the app
+              </p>
+              <img width={300} src={cameraIcon} alt="" />
+            </div>
+            <button onClick={provePersonhoodHandler}>Prove Personhood</button>
+          </div>
+        )}
+
+        {provePersonhood && (
+          <div className="face_auth_verified_container">
+            <img width={300} src={faceImg} alt="" />
+            <br />
+            <br />
+            <h4>
+              <b>Verifying</b>
+            </h4>
+            <p>
+              Face auth protects your world ID <br /> so only you can use it
+            </p>
+
+            <br />
+            <b className="text-success">
+              <FaCheckCircle /> Verified
+            </b>
+            <br />
+            <br />
+            <button onClick={authenticateVerifiedHandler}>Continue</button>
+          </div>
+        )}
       </div>
     </div>
   );

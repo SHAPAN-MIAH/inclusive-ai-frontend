@@ -9,9 +9,9 @@ const ProtectedRoute = ({children }: ProtectedRouteProps) => {
   const currentUser = useSelector((state: RootState) => state?.userData?.currentUser);
   const token = currentUser?.token;
   const location = useLocation();
-  
+  const authenticateVerified = localStorage.getItem("authenticateVerified")
 
-  if (!token) {
+  if (!token || authenticateVerified == "true") {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 

@@ -3,7 +3,7 @@
   margin: auto;
   display: flex;
   justify-content: center;
-  font-family:'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .login_form_container {
@@ -122,7 +122,6 @@
 
 .otp_box {
   text-align: center;
-  
 }
 
 #otpSubmitBtn {
@@ -152,4 +151,87 @@
   cursor: pointer;
 }
 @media screen and (max-width: 768px) {
+}
+
+.world_id_container {
+  width: 100%;
+  margin: 40px 0px;
+  padding: 20px;
+  background-color: #929292;
+  color: #fff;
+  border-radius: 10px;
+}
+.world_id_container span {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.authenticBtn {
+  padding: 10px 40px;
+  border-radius: 10px;
+  margin: 40px 0px 0px 0px;
+  background-color: #212529;
+  color: #fff;
+  border: none;
+}
+.authenticBtn:hover {
+  background-color: #4f4f4f;
+}
+.recoverBtn {
+  padding: 10px 40px;
+  border-radius: 10px;
+  margin: 40px 0px 0px 0px;
+  background-color: #fff;
+  color: #1b1b1b;
+  border: none;
+}
+.world_id_container .activeBtn {
+  border: none;
+  border-radius: 30px;
+  padding: 5px 20px;
+  color: rgb(0, 231, 0);
+  background: #fff;
+}
+
+/* prove_personHood_container css */
+
+.prove_personHood_container, .face_auth_verified_container {
+  width: 400px;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  padding: 30px 40px;
+  /* display: none; */
+  
+}
+.prove_personHood_cam_content p{
+  font-size: 20px;
+  color: rgb(70, 43, 226)
+}
+.prove_personHood_cam_content img{
+  border-radius: 10px;
+}
+
+.prove_personHood_container button{
+  border: none;
+  background-color: #1b1b1b;
+  border-radius: 10px;
+  color: #fff;
+  padding: 10px 20px;
+  width: 95%;
+  margin-top: 20px;
+}
+.prove_personHood_container button:hover{
+  background-color: #505050;
+}
+
+
+.face_auth_verified_container button{
+  border: none;
+  background-color: green;
+  color: #fff;
+  padding: 10px 40px;
+  border-radius: 5px;
+}
+.face_auth_verified_container button:hover{
+  background-color: rgb(0, 194, 0);
 }
